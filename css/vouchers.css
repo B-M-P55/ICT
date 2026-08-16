@@ -1,0 +1,389 @@
+.voucher-section {
+
+    min-height: 1000px;
+
+    padding: 35px 40px 60px;
+
+    background-image:
+        url("../img/water.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.voucher-container {
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+
+/* PAGE TITLE */
+
+.page-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.title-icon {
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 8px;
+
+    background-color: #119ed0;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+.page-title h1 {
+
+    margin: 0;
+
+    color: #101778;
+
+    font-size: 25px;
+}
+
+.page-title p {
+
+    margin: 0;
+
+    color: #101778;
+
+    font-size: 15px;
+}
+
+
+/* CARD */
+
+.voucher-card {
+
+    background-color: rgba(255,255,255,0.96);
+
+    border-radius: 25px;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* CARD TITLE */
+
+.card-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
+
+    padding: 8px 15px;
+
+    margin-bottom: 20px;
+}
+
+.card-title i {
+
+    color: #0088cc;
+
+    font-size: 20px;
+}
+
+.card-title h2 {
+
+    color: #101778;
+
+    font-size: 15px;
+
+    margin: 0;
+}
+
+
+/* CUSTOMER / ORDER */
+
+.customer-order {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.information-box {
+
+    padding: 10px 15px 20px;
+
+    border-right: 1px solid #ddd;
+}
+
+.information-box h3 {
+
+    color: #222;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+.information-item {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.information-item i {
+
+    color: #111;
+
+    width: 20px;
+
+    font-size: 17px;
+}
+
+.information-item p {
+
+    margin: 0 0 5px;
+
+    font-size: 12px;
+
+    color: #555;
+}
+
+.information-item strong {
+
+    font-size: 12px;
+
+    color: #222;
+}
+
+
+/* ORDER TABLE */
+
+.order-table {
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+}
+
+.table-header {
+
+    background-color: #55b8e4;
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        1fr;
+
+    padding: 11px 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.table-header span:first-child {
+
+    text-align: left;
+}
+
+
+.table-row {
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        1fr;
+
+    padding: 20px;
+
+    font-size: 12px;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.table-row span:first-child {
+
+    text-align: left;
+}
+
+
+/* PAYMENT */
+
+.payment-information {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        1.5fr;
+
+    gap: 20px;
+
+    padding: 15px;
+}
+
+.payment-information p {
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.payment-information strong {
+
+    font-size: 12px;
+}
+
+
+/* PAID */
+
+.paid {
+
+    display: inline-block;
+
+    background-color: #9bf05f;
+
+    color: #195d1b;
+
+    padding: 6px 20px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+/* HISTORY */
+
+.history-table {
+
+    margin-top: 10px;
+}
+
+.history-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid #ddd;
+
+    font-size: 12px;
+}
+
+
+/* MORE ORDER */
+
+.more-order-btn {
+
+    display: block;
+
+    margin: 30px auto 5px;
+
+    padding: 10px 35px;
+
+    border: 1px solid #555;
+
+    background: white;
+
+    border-radius: 25px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.more-order-btn:hover {
+
+    background-color: #101778;
+
+    color: white;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .voucher-section {
+        padding: 25px 15px;
+    }
+
+    .customer-order {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-information {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-header,
+    .table-row {
+        font-size: 10px;
+    }
+
+}
+

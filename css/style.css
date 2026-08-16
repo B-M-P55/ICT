@@ -1,0 +1,215 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 50px;
+
+    background-color: white;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* LOGO */
+
+.logo-section {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.logo-section img {
+    width: 45px;
+    height: 45px;
+}
+
+.logo-section h2 {
+    margin: 0;
+
+    color: #111;
+
+    font-size: 22px;
+}
+
+
+/* MENU */
+
+.nav-links {
+    display: flex;
+
+    list-style: none;
+
+    gap: 40px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #111;
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #0088cc;
+}
+
+
+/* RIGHT SIDE */
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.order-btn {
+    background-color: #15177d;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 28px;
+
+    border-radius: 25px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.order-btn:hover {
+    background-color: #0c0e60;
+}
+
+
+/* PROFILE */
+
+.profile {
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid #222;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #000;
+
+    text-decoration: none;
+
+    font-size: 21px;
+}
+
+/*FOOTER*/
+
+.footer {
+
+    background-color: #171878;
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns:
+        1.3fr
+        1fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 30px;
+
+    padding: 40px 55px 20px;
+
+    position: relative;
+}
+
+
+/* LOGO */
+
+.footer-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.footer-logo img {
+
+    width: 60px;
+    height: 60px;
+}
+
+.footer-logo h2 {
+
+    margin: 0;
+
+    font-size: 22px;
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-column h3 {
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.footer-column a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* COPYRIGHT */
+
+.copyright {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 12px;
+}
+

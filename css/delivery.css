@@ -1,0 +1,244 @@
+.delivery-section {
+
+    min-height: 950px;
+
+    padding: 40px 50px 70px;
+
+    background-image:
+        url("../img/bottle.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* CONTAINER */
+
+.delivery-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+/* PAGE TITLE */
+
+.page-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 45px;
+}
+
+.title-icon {
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background-color: #119ed0;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+}
+
+.page-title h1 {
+
+    color: #101778;
+
+    font-size: 28px;
+
+    margin: 0;
+}
+
+.page-title p {
+
+    color: #101778;
+
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+/* DELIVERY CARD */
+
+.delivery-card {
+
+    background: rgba(255,255,255,0.95);
+
+    border: 1px solid #555;
+
+    border-radius: 28px;
+
+    padding: 25px;
+
+    margin-bottom: 35px;
+
+    min-height: 220px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25);
+}
+
+
+/* LEFT */
+
+.delivery-left {
+
+    width: 55%;
+}
+
+.delivery-left h2 {
+
+    color: #101778;
+
+    font-size: 21px;
+
+    margin-bottom: 20px;
+}
+
+
+.delivery-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    color: #333;
+
+    font-size: 14px;
+}
+
+.delivery-info i {
+
+    color: #111;
+
+    width: 20px;
+
+    font-size: 18px;
+}
+
+
+/* BUTTON */
+
+.details-btn {
+
+    background-color: white;
+
+    border: 1px solid #555;
+
+    border-radius: 25px;
+
+    padding: 10px 20px;
+
+    margin-top: 5px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.details-btn:hover {
+
+    background-color: #101778;
+
+    color: white;
+}
+
+
+/* RIGHT */
+
+.delivery-right {
+
+    width: 40%;
+
+    text-align: right;
+
+    padding-top: 0;
+}
+
+.delivery-right p {
+
+    margin: 20px 0;
+
+    color: #333;
+
+    font-size: 14px;
+}
+
+
+/* STATUS */
+
+.status {
+
+    display: inline-block;
+
+    padding: 8px 28px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.delivered {
+
+    background-color: #9bf05f;
+
+    color: #164d18;
+}
+
+.cancelled {
+
+    background-color: #f3a675;
+
+    color: #7a2710;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .delivery-section {
+        padding: 30px 15px;
+    }
+
+    .delivery-card {
+        flex-direction: column;
+    }
+
+    .delivery-left,
+    .delivery-right {
+        width: 100%;
+    }
+
+    .delivery-right {
+        text-align: left;
+
+        margin-top: 20px;
+    }
+
+}
+
