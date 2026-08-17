@@ -1,0 +1,646 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    background: #1e1e1e;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #111;
+
+    min-height: 100vh;
+}
+
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.page-title {
+
+    height: 45px;
+
+    padding-left: 15px;
+
+    padding-top: 15px;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 16px;
+}
+
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.profile-page {
+
+    position: relative;
+
+    width: calc(100% - 29px);
+
+    height: 683px;
+
+    margin-left: 14px;
+
+    margin-right: 15px;
+
+    background: #ffffff;
+
+    display: flex;
+
+    overflow: hidden;
+}
+
+
+
+/* =========================================
+   LEFT SIDEBAR
+========================================= */
+
+.sidebar {
+
+    width: 38%;
+
+    height: 100%;
+
+    background: rgb(19, 21, 108);
+
+    flex-shrink: 0;
+
+    color: white;
+}
+
+
+
+/* =========================================
+   USER HEADER
+========================================= */
+
+.user-header {
+
+    display: flex;
+
+    align-items: center;
+
+    height: 80px;
+
+    margin-left: 61px;
+
+    margin-top: 29px;
+}
+
+
+
+/* =========================================
+   WATER LOGO
+========================================= */
+
+.water-logo {
+
+    width: 49px;
+
+    height: 49px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.water-logo svg {
+
+    width: 30px;
+
+    height: 36px;
+}
+
+
+
+/* =========================================
+   USER DETAILS
+========================================= */
+
+.user-details {
+
+    margin-left: 17px;
+
+    margin-top: 0;
+}
+
+
+.user-name {
+
+    font-size: 17px;
+
+    font-weight: 400;
+
+    line-height: 20px;
+
+    margin-bottom: 6px;
+}
+
+
+
+/* =========================================
+   VIEW PROFILE BUTTON
+========================================= */
+
+.view-profile-btn {
+
+    width: 83px;
+
+    height: 18px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #a9ef57;
+
+    color: #111;
+
+    font-size: 9px;
+
+    line-height: 18px;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+
+.view-profile-btn:hover {
+
+    background: #b8ff68;
+}
+
+
+
+/* =========================================
+   SIDEBAR MENU
+========================================= */
+
+.sidebar-menu {
+
+    position: relative;
+
+    margin-top: 56px;
+
+    width: 100%;
+
+    height: calc(100% - 165px);
+}
+
+
+
+/* =========================================
+   SIDEBAR ITEMS
+========================================= */
+
+.sidebar-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: calc(100% - 44px);
+
+    height: 35px;
+
+    margin-left: 22px;
+
+    margin-bottom: 52px;
+
+    padding-left: 23px;
+
+    padding-right: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    text-align: left;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+
+/* =========================================
+   SELECTED MENU
+========================================= */
+
+.sidebar-item.selected {
+
+    background: #d9d9d9;
+
+    color: #555;
+
+    border-left: 3px solid rgb(19, 21, 108);
+
+    padding-left: 20px;
+
+    margin-bottom: 52px;
+}
+
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.right-arrow {
+
+    color: rgb(19, 21, 108);
+
+    font-size: 9px;
+
+    margin-right: 0;
+}
+
+
+
+/* =========================================
+   MENU HOVER
+========================================= */
+
+.sidebar-item:not(.selected):hover {
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+
+    position: absolute;
+
+    left: 46px;
+
+    bottom: 4px;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 11px;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+
+
+/* =========================================
+   RIGHT CONTENT
+========================================= */
+
+.content {
+
+    width: 62%;
+
+    height: 100%;
+
+    background: #ffffff;
+
+    padding-left: 46px;
+
+    padding-right: 82px;
+
+    padding-top: 42px;
+}
+
+
+
+/* =========================================
+   FORM ROW
+========================================= */
+
+.form-row {
+
+    width: 100%;
+
+    margin-bottom: 31px;
+}
+
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-row label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #111;
+
+    margin-bottom: 12px;
+
+    line-height: 16px;
+}
+
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.profile-input {
+
+    width: 100%;
+
+    height: 41px;
+
+    border: 1px solid #999999;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    padding-left: 13px;
+
+    padding-right: 13px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+
+.profile-input:focus {
+
+    border-color: #888888;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+
+
+/* =========================================
+   USERNAME NOTE
+========================================= */
+
+.username-note {
+
+    margin-top: 7px;
+
+    color: #a8a8a8;
+
+    font-size: 9px;
+
+    line-height: 11px;
+}
+
+
+.username-note span {
+
+    color: #e00000;
+
+    font-size: 13px;
+
+    margin-right: 2px;
+}
+
+
+
+/* =========================================
+   TOWNSHIP SELECT
+========================================= */
+
+.select-box {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.select-box select {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    padding-right: 40px;
+}
+
+
+.select-arrow {
+
+    position: absolute;
+
+    right: 28px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #000;
+
+    font-size: 11px;
+
+    pointer-events: none;
+}
+
+
+
+/* =========================================
+   SAVE AREA
+========================================= */
+
+.save-area {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 29px;
+}
+
+
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.save-button {
+
+    width: 127px;
+
+    height: 43px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #20a5dc;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+
+.save-button:hover {
+
+    background: #20a5dc;
+}
+
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+
+    width: 100%;
+
+    text-align: right;
+
+    margin-top: 10px;
+
+    font-size: 12px;
+}
+
+
+
+/* =========================================
+   OTHER CONTENT
+========================================= */
+
+.other-content {
+
+    display: none;
+
+    padding-top: 40px;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.other-content h2 {
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    margin-bottom: 15px;
+}
+
+
+.other-content p {
+
+    font-size: 14px;
+
+    color: #666;
+}
+
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .profile-page {
+
+        width: 100%;
+
+        height: auto;
+
+        margin: 0;
+
+        flex-direction: column;
+    }
+
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: 400px;
+    }
+
+
+    .content {
+
+        width: 100%;
+
+        padding: 40px 30px;
+    }
+
+
+    .user-header {
+
+        margin-left: 40px;
+    }
+
+}

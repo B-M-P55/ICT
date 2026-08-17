@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2O2U - Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVIGATION BAR
+    ========================================== -->
+    <header class="navbar-area">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4">
+
+                <!-- LOGO -->
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <div class="water-logo">
+                        <svg viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 3 C30 3 8 29 8 43 C8 57 18 66 30 66 C42 66 52 57 52 43 C52 29 30 3 30 3Z" fill="#179ED5" />
+                            <path d="M30 12 C30 12 15 32 15 43 C15 53 21 59 30 59 C39 59 45 53 45 43 C45 32 30 12 30 12Z" fill="white" />
+                            <path d="M30 20 C30 20 20 35 20 43 C20 49 24 53 30 53 C36 53 40 49 40 43 C40 35 30 20 30 20Z" fill="#179ED5" />
+                        </svg>
+                    </div>
+                    <span class="brand-name">H2O2U</span>
+                </a>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- MENU -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#products">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- ORDER BUTTON -->
+                    <button class="order-button" id="orderButton">ORDER NOW</button>
+
+                    <!-- USER ICON -->
+                    <button class="user-button" id="userButton">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
+    <section class="hero-section">
+        <div class="container hero-overlay">
+            <div class="row align-items-center w-100">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <h1>
+                            Delivered Right<br>
+                            To Your Home &<br>
+                            Office Door.
+                        </h1>
+                        <p>
+                            Fresh and clean drinking water<br>
+                            delivered directly to you.
+                        </p>
+                        <button class="hero-button" id="heroOrderButton">ORDER NOW</button>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex justify-content-center justify-content-lg-end mt-4 mt-lg-0">
+                    <!-- LIMITED OFFER -->
+                    <div class="offer-circle">
+                        <span>Limited Offer</span>
+                        <strong>30% OFF</strong>
+                        <img src="images/two-btl.jpg" class="offer-bottle" alt="Water Jugs">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SERVICE ICONS
+    ========================================== -->
+    <section class="service-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-6 col-md-3 service-item mb-3 mb-md-0">
+                    <div class="service-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+                    </div>
+                    <span>Fresh Water</span>
+                </div>
+                <div class="col-6 col-md-3 service-item mb-3 mb-md-0">
+                    <div class="service-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <span>Easy Order</span>
+                </div>
+                <div class="col-6 col-md-3 service-item">
+                    <div class="service-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <span>Fast Delivery</span>
+                </div>
+                <div class="col-6 col-md-3 service-item">
+                    <div class="service-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span>Safe & Clean</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         PRODUCTS SECTION
+    ========================================== -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-heading">
+                <span>PRODUCTS</span>
+                <h2>We proudly provide water products.</h2>
+            </div>
+
+            <!-- PRODUCT ROW (Populated via JS) -->
+            <div id="productRow" class="row g-4"></div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         DELIVERY BANNER
+    ========================================== -->
+    <section class="delivery-banner">
+        <div class="delivery-content">
+            <h2>Delivered fresh to your door</h2>
+            <p>by our team.</p>
+        </div>
+    </section>
+
+    <!-- =========================================
+         REVIEWS
+    ========================================== -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-heading">
+                <span>REVIEWS</span>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- REVIEW 1 -->
+                <div class="col-md-6 col-lg-5">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="user-circle"></div>
+                                <span>John Smith</span>
+                            </div>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <p>
+                            Very satisfied with the water delivery service. The water is fresh and the delivery is always on time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- REVIEW 2 -->
+                <div class="col-md-6 col-lg-5">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="user-circle"></div>
+                                <span>Jane Davis</span>
+                            </div>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <p>
+                            Excellent service and very convenient ordering system. Highly recommended.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         CONTACT SECTION
+    ========================================== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Need water delivered?</h2>
+                <p>Order today and enjoy fresh water delivered directly to your door.</p>
+                <button class="contact-button" id="contactOrderButton">ORDER NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- LOGO -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30 3 C30 3 8 29 8 43 C8 57 18 66 30 66 C42 66 52 57 52 43 C52 29 30 3 30 3Z" fill="#179ED5" />
+                                <path d="M30 12 C30 12 15 32 15 43 C15 53 21 59 30 59 C39 59 45 53 45 43 C45 32 30 12 30 12Z" fill="white" />
+                                <path d="M30 20 C30 20 20 35 20 43 C20 49 24 53 30 53 C36 53 40 49 40 43 C40 35 30 20 30 20Z" fill="#179ED5" />
+                            </svg>
+                        </div>
+                        <strong>H2O2U</strong>
+                    </div>
+                </div>
+
+                <!-- PRIVACY -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>PRIVACY</h5>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                </div>
+
+                <!-- SERVICES -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>SERVICES</h5>
+                    <a href="#products">Products</a>
+                    <a href="#">Order</a>
+                    <a href="#">Payment</a>
+                </div>
+
+                <!-- ABOUT -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>ABOUT US</h5>
+                    <a href="#">Contact</a>
+                    <a href="#">Reviews</a>
+                    <a href="#">Our Story</a>
+                </div>
+
+                <!-- INFORMATION -->
+                <div class="col-lg-3 col-md-6">
+                    <h5>INFORMATION</h5>
+                    <a href="#">Delivery History</a>
+                    <a href="#">Vouchers</a>
+                    <a href="#">User Profile</a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                © 2026 All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>H2O2U - Checkout</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid px-4">
+
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img src="images/logo.png" class="logo" alt="H2O2U">
+                <span>H2O2U</span>
+            </a>
+
+            <div class="navbar-menu">
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Reviews</a>
+                <a href="#">Contact Us</a>
+
+                <a href="#" class="order-btn">ORDER NOW</a>
+
+                <div class="profile-icon">
+                    <span>●</span>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= BLUE WAVE ================= -->
+    <section class="wave-section">
+        <div class="wave wave-one"></div>
+        <div class="wave wave-two"></div>
+        <div class="wave wave-three"></div>
+    </section>
+
+
+    <!-- ================= CHECKOUT ================= -->
+    <main class="checkout-container">
+
+        <!-- YOUR ORDER -->
+        <section class="order-section">
+
+            <h3 class="section-title">
+                Your Order
+            </h3>
+
+            <div class="order-table">
+
+                <div class="order-row order-header">
+                    <div>PRODUCT</div>
+                    <div>SUB TOTAL</div>
+                </div>
+
+                <div class="order-row">
+                    <div>
+                        BOTTLED WATER
+                        <span class="quantity">× 1</span>
+                    </div>
+
+                    <div>5000 Ks.</div>
+                </div>
+
+                <div class="order-total-row">
+                    <strong>SUB TOTAL</strong>
+                    <span>5000 Ks.</span>
+                </div>
+
+                <div class="order-total-row">
+                    <strong>TOTAL</strong>
+                    <span>5000 Ks.</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BILLING DETAILS -->
+        <section class="billing-section">
+
+            <h3 class="section-title">
+                Billing Details
+            </h3>
+
+            <form id="checkoutForm">
+
+                <!-- First + Last Name -->
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label for="firstName">
+                            First Name <span>*</span>
+                        </label>
+
+                        <input type="text"
+                               id="firstName"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="lastName">
+                            Last Name <span>*</span>
+                        </label>
+
+                        <input type="text"
+                               id="lastName"
+                               class="form-control"
+                               required>
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">
+                        Phone <span>*</span>
+                    </label>
+
+                    <input type="text"
+                           id="phone"
+                           class="form-control"
+                           required>
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">
+                        Email Address <span>*</span>
+                    </label>
+                    <input type="email"
+                           id="email"
+                           class="form-control"
+                           required>
+                </div>
+
+
+                <!-- Address -->
+                <div class="form-group">
+
+                    <label for="township">
+                        Address
+                    </label>
+
+                    <select id="township" class="form-control">
+
+                        <option>Township / City</option>
+                        <option>Insein</option>
+                        <option>Mayangone</option>
+                        <option>Hlaing</option>
+                        <option>Hmawbi</option>
+                        <option>Kamayut</option>
+                        <option>Sanchaung</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Detailed Address -->
+                <div class="form-group">
+
+                    <label for="address">
+                        Detailed Address
+                    </label>
+
+                    <textarea id="address"
+                              class="form-control"
+                              rows="4"></textarea>
+
+                </div>
+
+
+                <!-- Privacy Notice -->
+                <div class="privacy-box">
+
+                    <p>
+                        Your personal data will be used to process your order,
+                        support your experience throughout this website,
+                        and for other purposes described in our
+                        <a href="#">privacy policy</a>.
+                    </p>
+
+                    <button type="submit" class="place-order-btn">
+                        Place order
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <!-- Logo -->
+                <div class="col-md-3 footer-logo">
+
+                    <div class="footer-logo-circle">
+                        💧
+                    </div>
+
+                    <span>H2O2U</span>
+
+                </div>
+
+
+                <!-- Privacy -->
+                <div class="col-md-2">
+
+                    <h5>PRIVACY</h5>
+
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Cookies</a>
+
+                </div>
+
+
+                <!-- Services -->
+                <div class="col-md-2">
+
+                    <h5>SERVICES</h5>
+
+                    <a href="#">Products</a>
+                    <a href="#">Order</a>
+                    <a href="#">Payment</a>
+
+                </div>
+
+
+                <!-- About -->
+                <div class="col-md-2">
+
+                    <h5>ABOUT US</h5>
+
+                    <a href="#">Contact</a>
+                    <a href="#">Reviews</a>
+                    <a href="#">Our story</a>
+
+                </div>
+
+
+                <!-- Information -->
+                <div class="col-md-2">
+
+                    <h5>INFORMATION</h5>
+
+                    <a href="#">Delivery Policy</a>
+                    <a href="#">Water Quality</a>
+                    <a href="#">User Policy</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 All Right Reserved
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/order.js"></script>
+
+</body>
+
+</html>
