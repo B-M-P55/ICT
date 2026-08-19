@@ -131,7 +131,7 @@ $result = $conn->query($sql);
                     <div class="col-12">
                       <label class="form-label">Address</label>
                           <select class="form-select custom-select mb-2" id="townshipSelect"           name="township">
-                            <option selected disabled>Choose Township</option>
+                            <option selected disabled>Township / City</option>
                             <?php
                               if ($result && $result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {

@@ -120,35 +120,14 @@
                     </div>
 
                     <div class="col-12">
-                      <label class="form-label">Address</label>
-                          <select class="form-select custom-select mb-2" id="townshipSelect"           name="township">
-                            <option selected disabled>Choose Township</option>
-                            <?php
-                              if ($result && $result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                  $name = htmlspecialchars($row['address']);
-                                  $days = htmlspecialchars($row['estimated_arrival']);
-                
-                                  echo '<option value="' . $name . '" data-arrival="' . $days . '">' . $name . '</option>';
-                                }
-                              } else {
-                                echo '<option disabled>No townships available</option>';
-                            }
-                            ?>
+                        <label class="form-label">Address</label>
+                        <select class="form-select custom-select mb-2">
+                            <option selected disabled>Township / City</option>
+                            <option value="Insein">InnSein</option>
+                            <option value="Mayangone">MayangGone</option>
+                            <option value="Hlaing">Hlaing</option>
                         </select>
-                        <div style="margin-top: 15px;">
-                          Estimated Arrival: <strong id="arrivalDisplay" class="text-primary">Please select a township</strong>
-                        </div>
                     </div>
-
-                    <script>
-                      document.getElementById('townshipSelect').addEventListener('change', function() {
-                      const selectedOption = this.options[this.selectedIndex];
-                      const arrivalTime = selectedOption.getAttribute('data-arrival');
-    
-                      document.getElementById('arrivalDisplay').textContent = arrivalTime ? arrivalTime : 'Please select a township';
-                    });
-                    </script>
 
                     <div class="col-12">
                         <label class="form-label">Detailed Address</label>
