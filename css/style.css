@@ -1,187 +1,329 @@
-/* =========================================
-   GLOBAL STYLES
-========================================== */
+/* =========================================================
+   H2O2U - MAIN STYLE SHEET
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL STYLES
+   ========================================================= */
 
 :root {
-    --primary-navy: #0f1c5c;
-    --dark-navy: #0b1052;
+
+    --primary-navy: #15177d;
+    --dark-navy: #0f145f;
+
     --accent-blue: #179ed5;
+
     --light-blue: #7ba2e7;
+
     --text-dark: #333333;
-    --bg-light: #f8fafc;
+
+    --white: #ffffff;
+
+    --light-gray: #f5f5f5;
+
 }
+
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 html {
+
     scroll-behavior: smooth;
+
 }
+
 
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
     color: var(--text-dark);
+
     background-color: #ffffff;
+
+    overflow-x: hidden;
+
 }
 
+
+/* =========================================================
+   2. NAVBAR
+   ========================================================= */
 
 .navbar {
+
+    width: 100%;
+
+    min-height: 65px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 12px 50px;
+    padding: 10px 50px;
 
-    background-color: white;
+    background-color: #ffffff;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.10);
 
     position: relative;
-    z-index: 10;
+
+    z-index: 100;
+
 }
 
 
-/* LOGO */
+/* ---------------------------------------------------------
+   Logo
+--------------------------------------------------------- */
 
 .logo-section {
+
     display: flex;
+
     align-items: center;
 
     gap: 10px;
+
 }
+
 
 .logo-section img {
+
     width: 45px;
+
     height: 45px;
+
+    object-fit: contain;
+
 }
+
 
 .logo-section h2 {
+
     margin: 0;
 
-    color: #111;
+    color: #111111;
 
     font-size: 22px;
+
+    font-weight: 600;
+
 }
 
 
-/* MENU */
+/* ---------------------------------------------------------
+   Navigation Links
+--------------------------------------------------------- */
 
 .nav-links {
+
     display: flex;
 
-    list-style: none;
+    align-items: center;
 
     gap: 40px;
 
+    list-style: none;
+
     margin: 0;
+
     padding: 0;
+
 }
+
+
+.nav-links li {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
 
 .nav-links a {
+
     text-decoration: none;
 
-    color: #111;
+    color: #111111;
 
-    font-size: 16px;
+    font-size: 14px;
 
     font-weight: 500;
+
+    transition: color 0.2s ease;
+
 }
+
 
 .nav-links a:hover {
-    color: #0088cc;
+
+    color: var(--accent-blue);
+
 }
 
 
-/* RIGHT SIDE */
+/* ---------------------------------------------------------
+   Navigation Buttons
+--------------------------------------------------------- */
 
 .nav-buttons {
+
     display: flex;
+
     align-items: center;
 
-    gap: 25px;
+    gap: 20px;
+
 }
 
 
 .order-btn {
-    background-color: #15177d;
 
-    color: white;
+    background-color: var(--primary-navy);
+
+    color: #ffffff;
 
     border: none;
 
-    padding: 12px 28px;
+    padding: 10px 25px;
 
     border-radius: 25px;
 
-    font-size: 13px;
+    font-size: 12px;
+
+    font-weight: 600;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
 }
+
 
 .order-btn:hover {
+
     background-color: #0c0e60;
+
+    transform: translateY(-1px);
+
 }
 
 
-/* PROFILE */
+/* ---------------------------------------------------------
+   Profile Button
+--------------------------------------------------------- */
 
 .profile {
-    width: 45px;
-    height: 45px;
 
-    border: 1px solid #222;
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid #222222;
 
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    color: #000;
+    color: #000000;
 
     text-decoration: none;
 
-    font-size: 21px;
+    font-size: 19px;
+
+    background-color: #ffffff;
+
 }
 
 
-/* =========================================
-   HERO SECTION
-========================================== */
+.profile:hover {
+
+    color: var(--primary-navy);
+
+}
+
+
+/* =========================================================
+   3. HERO SECTION
+   ========================================================= */
 
 .hero-section {
+
     position: relative;
 
     min-height: 500px;
 
     background:
+
         linear-gradient(
             rgba(20, 100, 150, 0.08),
             rgba(20, 100, 150, 0.08)
         ),
+
         url("../images/water_splash.jpg")
-        center center / cover no-repeat;
+
+        center center /
+
+        cover
+
+        no-repeat;
 
     display: flex;
+
     align-items: center;
 
     padding: 60px 0;
+
 }
 
 
-/* Hero text */
+.hero-overlay {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
 
 .hero-content {
+
     color: #ffffff;
 
     text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.2);
+        0 2px 4px rgba(0, 0, 0, 0.20);
+
 }
 
+
 .hero-content h1 {
+
     font-size: 2.8rem;
 
     font-weight: 800;
@@ -189,9 +331,12 @@ body {
     line-height: 1.2;
 
     margin-bottom: 20px;
+
 }
 
+
 .hero-content p {
+
     font-size: 1.1rem;
 
     opacity: 0.95;
@@ -199,12 +344,16 @@ body {
     margin-bottom: 25px;
 
     line-height: 1.6;
+
 }
 
 
-/* Hero button */
+/* ---------------------------------------------------------
+   Hero Button
+--------------------------------------------------------- */
 
 .hero-button {
+
     background-color: var(--primary-navy);
 
     color: #ffffff;
@@ -217,42 +366,60 @@ body {
 
     font-weight: 700;
 
+    cursor: pointer;
+
     box-shadow:
         0 4px 10px rgba(0, 0, 0, 0.15);
 
-    transition: all 0.3s ease;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
 }
 
+
 .hero-button:hover {
+
     background-color: #1a2b85;
 
     transform: translateY(-2px);
+
 }
 
 
-/* Offer */
+/* ---------------------------------------------------------
+   Limited Offer
+--------------------------------------------------------- */
 
 .offer-wrapper {
+
     display: flex;
 
     justify-content: center;
+
     align-items: center;
+
 }
 
+
 .offer-circle {
+
     background-color: var(--primary-navy);
 
     color: #ffffff;
 
     width: 220px;
+
     height: 220px;
 
     border-radius: 50%;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
@@ -260,385 +427,659 @@ body {
     position: relative;
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.2);
+        0 10px 25px rgba(0, 0, 0, 0.20);
+
 }
 
+
 .offer-circle span {
+
     font-size: 0.9rem;
 
     letter-spacing: 1px;
+
 }
 
+
 .offer-circle strong {
+
     font-size: 1.8rem;
 
     font-weight: 800;
+
 }
 
+
 .offer-circle img.offer-bottle {
+
     position: absolute;
 
     bottom: -35px;
+
     right: -25px;
 
     width: 140px;
 
     filter:
         drop-shadow(
-            0 5px 5px rgba(0, 0, 0, 0.3)
+            0 5px 5px rgba(0, 0, 0, 0.30)
         );
+
 }
 
 
-/* =========================================
-   SERVICE SECTION
-========================================== */
+/* =========================================================
+   4. SERVICE SECTION
+   ========================================================= */
 
 .service-section {
+
     background-color: var(--primary-navy);
 
     padding: 25px 0;
+
 }
+
 
 .service-item {
+
     color: #ffffff;
+
 }
+
 
 .service-icon {
+
     margin-bottom: 6px;
+
 }
+
 
 .service-icon svg {
+
     stroke: currentColor;
+
 }
 
+
 .service-item span {
+
     font-size: 0.9rem;
 
     font-weight: 600;
+
 }
 
 
-/* =========================================
-   PRODUCTS SECTION
-========================================== */
+/* =========================================================
+   5. PRODUCTS SECTION
+   ========================================================= */
 
 .products-section {
-    padding: 60px 0;
+
+    padding-top: 65px;
+
+    padding-bottom: 80px;
 
     background-color: #ffffff;
 
+
     /*
-       Small dotted background
-       similar to the reference image
+       Dotted background similar
+       to your reference image
     */
 
     background-image:
+
         radial-gradient(
-            #d2d2d2 1px,
+            #cfcfcf 1px,
             transparent 1px
         );
 
     background-size: 22px 22px;
+
 }
 
 
-/* Section heading */
+/* ---------------------------------------------------------
+   Products Heading
+--------------------------------------------------------- */
 
-.section-heading {
+.products-section .section-heading {
+
     text-align: center;
 
-    margin-bottom: 45px;
+    margin-bottom: 50px;
+
 }
 
-.section-heading span {
+
+.products-section .section-heading span {
+
+    display: block;
+
     color: var(--primary-navy);
 
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    font-size: 0.85rem;
-}
-
-.section-heading h2 {
-    color: #333333;
+    font-size: 13px;
 
     font-weight: 700;
 
-    font-size: 1.8rem;
+    letter-spacing: 1px;
 
-    margin-top: 8px;
+    margin-bottom: 12px;
+
 }
 
 
-/* =========================================
-   PRODUCT CARD
-========================================== */
+.products-section .section-heading h2 {
+
+    margin: 0;
+
+    color: #333333;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+}
+
+
+/* =========================================================
+   6. PRODUCT ROW
+   ========================================================= */
+
+.product-row {
+
+    max-width: 760px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    row-gap: 55px;
+
+}
+
+
+/* =========================================================
+   7. PRODUCT COLUMN
+   ========================================================= */
+
+.product-column {
+
+    width: 50%;
+
+    padding-left: 18px;
+
+    padding-right: 18px;
+
+}
+
+
+/* =========================================================
+   8. PRODUCT CARD
+   ========================================================= */
 
 .product-card {
-    background-color: #ffffff;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5e7eb;
-
-    box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.06);
-
-    overflow: hidden;
 
     position: relative;
 
-    min-height: 520px;
+    width: 100%;
 
-    display: flex;
-    flex-direction: column;
+    background-color: transparent;
+
+    min-height: 535px;
 
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform 0.25s ease;
+
 }
+
 
 .product-card:hover {
-    transform: translateY(-4px);
 
-    box-shadow:
-        0 8px 25px rgba(15, 28, 92, 0.12);
+    transform: translateY(-3px);
+
 }
 
 
-/* Navy top section */
+/* =========================================================
+   9. NAVY PRODUCT TOP
+   ========================================================= */
 
 .product-top-banner {
-    background-color: var(--dark-navy);
 
-    height: 190px;
+    position: relative;
 
     width: 100%;
 
+    height: 170px;
+
+    background-color: var(--primary-navy);
+
+    border-radius: 3px 3px 0 0;
+
+    /*
+       Pointed lower edge
+    */
+
     clip-path:
+
         polygon(
+
             0 0,
+
             100% 0,
-            100% 75%,
+
+            100% 78%,
+
             50% 100%,
-            0 75%
+
+            0 78%
+
         );
+
 }
 
 
-/* Product image */
+/* =========================================================
+   10. PRODUCT CIRCULAR IMAGE
+   ========================================================= */
 
 .product-img-wrapper {
-    width: 180px;
-    height: 180px;
+
+    position: absolute;
+
+    top: 75px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 5;
+
+
+    width: 185px;
+
+    height: 185px;
+
+
+    background-color: #ffffff;
 
     border-radius: 50%;
 
-    background-color: #ffffff;
 
-    margin:
-        -110px auto 20px auto;
+    padding: 7px;
 
-    position: relative;
 
-    z-index: 2;
+    border: 1px solid #dddddd;
+
 
     box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.12);
+        0 2px 4px rgba(0, 0, 0, 0.12);
+
 
     overflow: hidden;
 
-    padding: 6px;
 
-    border: 1px solid #f0f0f0;
+    transition:
+        transform 0.25s ease;
+
 }
 
+
+.product-card:hover
+.product-img-wrapper {
+
+    transform:
+        translateX(-50%)
+        scale(1.02);
+
+}
+
+
 .product-img-wrapper img {
+
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
     border-radius: 50%;
+
+    display: block;
+
 }
 
 
-/* Product body */
+/* =========================================================
+   11. PRODUCT BODY
+   ========================================================= */
 
 .product-body {
-    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    background-color: #ffffff;
+
+    margin-top: -1px;
+
+    min-height: 315px;
 
     padding:
-        10px 30px 30px 30px;
 
-    flex-grow: 1;
+        115px
+
+        25px
+
+        25px;
+
+
+    border-left:
+        1px solid #eeeeee;
+
+    border-right:
+        1px solid #eeeeee;
+
+    border-bottom:
+        2px solid #d7d7d7;
+
+
+    box-shadow:
+
+        0
+
+        3px
+
+        3px
+
+        rgba(0, 0, 0, 0.12);
+
 
     display: flex;
+
     flex-direction: column;
 
-    justify-content: space-between;
 }
+
+
+/* =========================================================
+   12. PRODUCT NAME
+   ========================================================= */
 
 .product-body h4 {
-    font-size: 1.25rem;
 
-    font-weight: 700;
+    text-align: center;
+
+    color: #111111;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    margin:
+
+        0
+
+        0
+
+        18px;
+
+}
+
+
+/* =========================================================
+   13. PRODUCT DESCRIPTION
+   ========================================================= */
+
+.product-body p {
 
     color: #222222;
 
-    margin-bottom: 15px;
+    font-size: 10px;
+
+    line-height: 1.45;
+
+    text-align: left;
+
+    margin:
+
+        0
+
+        0
+
+        35px;
+
+    min-height: 58px;
+
 }
 
-.product-body p {
-    font-size: 0.85rem;
 
-    color: #555555;
-
-    line-height: 1.6;
-
-    margin-bottom: 35px;
-
-    padding: 0 10px;
-}
-
-
-/* Product footer */
+/* =========================================================
+   14. PRODUCT FOOTER
+   ========================================================= */
 
 .product-footer {
+
+    margin-top: auto;
+
     display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
-    align-items: center;
+    width: 100%;
 
-    padding-top: 15px;
-
-    border-top:
-        1px solid #f3f4f6;
 }
 
+
+/* =========================================================
+   15. PRODUCT PRICE
+   ========================================================= */
+
 .product-price {
-    font-weight: 700;
-
-    font-size: 0.95rem;
-
-    color: #222222;
 
     display: flex;
 
     align-items: center;
 
-    gap: 6px;
+    gap: 8px;
+
+    color: #111111;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
 }
+
 
 .arrow-icon {
-    font-size: 0.7rem;
+
+    font-size: 8px;
 
     color: #000000;
+
 }
 
 
-/* Buy button */
+/* =========================================================
+   16. ORDER BUTTON
+   ========================================================= */
 
 .btn-buy {
-    background-color: var(--dark-navy);
-
-    color: #ffffff;
 
     border: none;
 
-    border-radius: 6px;
+    background-color: var(--primary-navy);
 
-    padding: 8px 24px;
+    color: #ffffff;
 
-    font-size: 0.8rem;
+    font-size: 8px;
 
-    font-weight: 600;
+    font-weight: 500;
+
+    padding:
+
+        8px
+
+        20px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
 
     transition:
+
         background-color 0.2s ease,
+
         transform 0.2s ease;
+
 }
+
 
 .btn-buy:hover {
-    background-color: #172183;
+
+    background-color: #0c0e60;
 
     transform: translateY(-1px);
+
 }
 
 
-/* =========================================
-   DELIVERY BANNER
-========================================== */
+/* =========================================================
+   17. DELIVERY BANNER
+   ========================================================= */
 
 .delivery-banner {
-  background:
-    linear-gradient(rgba(15, 28, 92, 0.3), rgba(15, 28, 92, 0.3)),
-    url("../images/bottle banner.jpg") center center / 80% auto no-repeat;
 
-  background-color: #7ba2e7;
+    background:
 
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+        linear-gradient(
+            rgba(15, 28, 92, 0.30),
+            rgba(15, 28, 92, 0.30)
+        ),
+
+        url("../images/bottle banner.jpg")
+
+        center center /
+
+        80% auto
+
+        no-repeat;
+
+
+    background-color: #7ba2e7;
+
+
+    min-height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #ffffff;
+
 }
 
+
 .delivery-content h2 {
+
     font-size: 2.2rem;
 
     font-weight: 800;
 
     margin: 0;
+
 }
 
+
 .delivery-content p {
+
     font-size: 1.2rem;
 
     margin: 0;
+
 }
 
 
-/* =========================================
-   REVIEWS SECTION
-========================================== */
+/* =========================================================
+   18. REVIEWS SECTION
+   ========================================================= */
 
 .reviews-section {
+
     position: relative;
 
     padding: 70px 0;
 
-    /*
-       Water splash image behind reviews
-    */
 
     background-image:
+
         linear-gradient(
             rgba(255, 255, 255, 0.45),
             rgba(255, 255, 255, 0.45)
         ),
+
         url("../images/splash.jpg");
+
 
     background-size: cover;
 
     background-position: center;
 
     background-repeat: no-repeat;
+
 }
 
 
-/* Review card */
+/* ---------------------------------------------------------
+   Reviews Heading
+--------------------------------------------------------- */
+
+.reviews-section .section-heading {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+.reviews-section .section-heading span {
+
+    color: var(--primary-navy);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   19. REVIEW CARD
+   ========================================================= */
 
 .review-card {
+
     background-color: var(--light-blue);
 
     color: #ffffff;
 
     border:
+
         2px solid #ffffff;
 
     border-radius: 6px;
@@ -648,10 +1089,14 @@ body {
     height: 100%;
 
     box-shadow:
+
         0 4px 15px rgba(0, 0, 0, 0.08);
+
 }
 
+
 .review-header {
+
     display: flex;
 
     justify-content: space-between;
@@ -659,16 +1104,23 @@ body {
     align-items: center;
 
     margin-bottom: 15px;
+
 }
 
+
 .review-user {
+
     display: flex;
 
     align-items: center;
+
 }
 
+
 .user-circle {
+
     width: 36px;
+
     height: 36px;
 
     border-radius: 50%;
@@ -676,51 +1128,75 @@ body {
     background-color: #d1d9e6;
 
     margin-right: 10px;
+
 }
 
+
 .stars {
+
     color: #ffc107;
 
     letter-spacing: 2px;
 
     font-size: 0.9rem;
+
 }
 
+
 .review-card p {
+
     font-size: 0.85rem;
 
     line-height: 1.5;
 
     margin: 0;
+
 }
 
 
-/*FOOTER*/
+/* =========================================================
+   20. FOOTER
+   ========================================================= */
 
 .footer {
 
     background-color: #171878;
 
-    color: white;
+    color: #ffffff;
 
     display: grid;
 
     grid-template-columns:
+
         1.3fr
+
         1fr
+
         1fr
+
         1fr
+
         1fr;
+
 
     gap: 30px;
 
-    padding: 40px 55px 20px;
+    padding:
+
+        40px
+
+        55px
+
+        20px;
 
     position: relative;
+
 }
 
 
-/* LOGO */
+/* ---------------------------------------------------------
+   Footer Logo
+--------------------------------------------------------- */
 
 .footer-logo {
 
@@ -729,23 +1205,35 @@ body {
     align-items: center;
 
     gap: 12px;
+
 }
+
 
 .footer-logo img {
 
     width: 60px;
+
     height: 60px;
+
+    object-fit: contain;
+
 }
+
 
 .footer-logo h2 {
 
     margin: 0;
 
     font-size: 22px;
+
+    font-weight: 600;
+
 }
 
 
-/* FOOTER COLUMNS */
+/* ---------------------------------------------------------
+   Footer Columns
+--------------------------------------------------------- */
 
 .footer-column {
 
@@ -754,31 +1242,40 @@ body {
     flex-direction: column;
 
     gap: 10px;
+
 }
+
 
 .footer-column h3 {
 
     font-size: 14px;
 
     margin-bottom: 8px;
+
 }
+
 
 .footer-column a {
 
-    color: white;
+    color: #ffffff;
 
     text-decoration: none;
 
     font-size: 11px;
+
 }
+
 
 .footer-column a:hover {
 
     text-decoration: underline;
+
 }
 
 
-/* COPYRIGHT */
+/* ---------------------------------------------------------
+   Copyright
+--------------------------------------------------------- */
 
 .copyright {
 
@@ -789,163 +1286,895 @@ body {
     margin-top: 15px;
 
     font-size: 12px;
+
 }
 
 
+/* =========================================================
+   21. LARGE DESKTOP - 1280px
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .navbar {
+
+        padding-left: 50px;
+
+        padding-right: 50px;
+
+    }
 
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================== */
+    .hero-section {
+
+        min-height: 500px;
+
+    }
+
+
+    .products-section {
+
+        padding-top: 65px;
+
+        padding-bottom: 90px;
+
+    }
+
+
+    .product-row {
+
+        max-width: 760px;
+
+    }
+
+
+    .product-column {
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   22. TABLET
+   ========================================================= */
 
 @media (max-width: 991px) {
 
+
+    /* Navbar */
+
     .navbar {
-        padding: 12px 30px;
+
+        padding:
+
+            10px
+
+            30px;
+
     }
+
 
     .nav-links {
+
         gap: 20px;
+
     }
+
+
+    .nav-links a {
+
+        font-size: 13px;
+
+    }
+
 
     .nav-buttons {
+
         gap: 15px;
+
     }
+
+
+    /* Hero */
 
     .hero-section {
+
         text-align: center;
 
-        padding: 70px 0;
+        padding:
+
+            70px
+
+            0;
+
     }
+
 
     .hero-content h1 {
+
         font-size: 2.3rem;
+
     }
 
+
     .offer-wrapper {
+
         margin-top: 40px;
+
+    }
+
+
+    /* Products */
+
+    .product-row {
+
+        max-width: 700px;
+
+    }
+
+
+    .product-img-wrapper {
+
+        width: 165px;
+
+        height: 165px;
+
+    }
+
+
+    .product-body {
+
+        padding-top: 105px;
+
+    }
+
+
+    /* Footer */
+
+    .footer {
+
+        grid-template-columns:
+
+            1.2fr
+
+            1fr
+
+            1fr;
+
     }
 
 }
 
 
+/* =========================================================
+   23. MOBILE / SMALL TABLET
+   ========================================================= */
+
 @media (max-width: 767px) {
 
-    .hero-section {
-        min-height: 650px;
+
+    /* Navbar */
+
+    .navbar {
+
+        padding:
+
+            10px
+
+            20px;
+
     }
+
+
+    .logo-section img {
+
+        width: 40px;
+
+        height: 40px;
+
+    }
+
+
+    .logo-section h2 {
+
+        font-size: 18px;
+
+    }
+
+
+    .nav-links {
+
+        gap: 12px;
+
+    }
+
+
+    .nav-links a {
+
+        font-size: 11px;
+
+    }
+
+
+    .order-btn {
+
+        padding:
+
+            8px
+
+            14px;
+
+        font-size: 10px;
+
+    }
+
+
+    .profile {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 17px;
+
+    }
+
+
+    /* Hero */
+
+    .hero-section {
+
+        min-height: 600px;
+
+    }
+
 
     .hero-content h1 {
+
         font-size: 2rem;
+
     }
+
 
     .hero-content p {
+
         font-size: 1rem;
+
     }
+
 
     .offer-circle {
+
         width: 180px;
+
         height: 180px;
+
     }
+
 
     .offer-circle strong {
+
         font-size: 1.5rem;
+
     }
 
+
     .offer-circle img.offer-bottle {
+
         width: 110px;
 
         right: -20px;
 
         bottom: -25px;
+
     }
+
+
+    /* Products */
 
     .products-section {
-        padding: 45px 15px;
+
+        padding:
+
+            45px
+
+            10px
+
+            60px;
+
     }
 
-    .section-heading h2 {
-        font-size: 1.5rem;
+
+    .products-section .section-heading {
+
+        margin-bottom: 35px;
+
     }
 
-    .product-card {
-        min-height: 500px;
+
+    .products-section .section-heading h2 {
+
+        font-size: 18px;
+
     }
+
+
+    .product-row {
+
+        max-width: 500px;
+
+        row-gap: 40px;
+
+    }
+
+
+    .product-column {
+
+        width: 50%;
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+
+    }
+
+
+    .product-top-banner {
+
+        height: 135px;
+
+    }
+
 
     .product-img-wrapper {
-        width: 150px;
-        height: 150px;
+
+        width: 145px;
+
+        height: 145px;
+
+        top: 60px;
+
     }
 
-    .contact-box {
-        padding: 30px 20px;
+
+    .product-body {
+
+        min-height: 280px;
+
+        padding:
+
+            90px
+
+            15px
+
+            18px;
+
     }
 
-    .footer {
-        grid-template-columns: 1.2fr 1fr 1fr;
-        padding: 40px 30px 20px;
+
+    .product-body h4 {
+
+        font-size: 14px;
+
+        margin-bottom: 12px;
+
     }
+
+
+    .product-body p {
+
+        font-size: 8px;
+
+        line-height: 1.35;
+
+    }
+
+
+    .product-price {
+
+        font-size: 8px;
+
+    }
+
+
+    .btn-buy {
+
+        font-size: 7px;
+
+        padding:
+
+            6px
+
+            10px;
+
+    }
+
+
+    /* Delivery */
+
+    .delivery-banner {
+
+        min-height: 180px;
+
+        background-size: cover;
+
+    }
+
 
     .delivery-content h2 {
+
         font-size: 1.7rem;
+
+    }
+
+
+    /* Reviews */
+
+    .reviews-section {
+
+        padding:
+
+            50px
+
+            15px;
+
+    }
+
+
+    /* Footer */
+
+    .footer {
+
+        grid-template-columns:
+
+            1fr
+
+            1fr;
+
+        padding:
+
+            35px
+
+            25px
+
+            20px;
+
+    }
+
+
+    .footer-logo {
+
+        grid-column:
+
+            1 / -1;
+
     }
 
 }
 
 
-@media (max-width: 575px) {
+/* =========================================================
+   24. SMALL MOBILE
+   ========================================================= */
 
-    .logo-section h2 {
-        font-size: 1.2rem;
-    }
+@media (max-width: 480px) {
 
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
+
+    /* Navbar */
 
     .navbar {
-        padding: 10px 15px;
+
+        padding:
+
+            8px
+
+            12px;
+
     }
+
+
+    .logo-section {
+
+        gap: 5px;
+
+    }
+
 
     .logo-section img {
-        width: 40px;
-        height: 40px;
+
+        width: 32px;
+
+        height: 32px;
+
     }
+
+
+    .logo-section h2 {
+
+        font-size: 14px;
+
+    }
+
 
     .nav-links {
-        gap: 12px;
+
+        gap: 7px;
+
     }
+
 
     .nav-links a {
-        font-size: 13px;
+
+        font-size: 8px;
+
     }
+
+
+    .nav-buttons {
+
+        gap: 6px;
+
+    }
+
 
     .order-btn {
-        padding: 9px 16px;
-        font-size: 12px;
+
+        padding:
+
+            6px
+
+            9px;
+
+        font-size: 7px;
+
     }
+
 
     .profile {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+
+        width: 30px;
+
+        height: 30px;
+
+        font-size: 13px;
+
     }
+
+
+    /* Hero */
+
+    .hero-section {
+
+        min-height: 520px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 1.7rem;
+
+    }
+
+
+    .hero-content p {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    /* Products */
+
+    .products-section {
+
+        padding:
+
+            40px
+
+            5px
+
+            50px;
+
+    }
+
+
+    .products-section .section-heading span {
+
+        font-size: 10px;
+
+    }
+
+
+    .products-section .section-heading h2 {
+
+        font-size: 15px;
+
+    }
+
+
+    .product-row {
+
+        max-width: 380px;
+
+        row-gap: 30px;
+
+    }
+
+
+    .product-column {
+
+        padding-left: 7px;
+
+        padding-right: 7px;
+
+    }
+
 
     .product-top-banner {
-        height: 170px;
+
+        height: 110px;
+
     }
+
 
     .product-img-wrapper {
-        margin-top: -90px;
+
+        width: 110px;
+
+        height: 110px;
+
+        top: 50px;
+
+        padding: 5px;
+
     }
+
+
+    .product-body {
+
+        min-height: 240px;
+
+        padding:
+
+            65px
+
+            10px
+
+            12px;
+
+    }
+
+
+    .product-body h4 {
+
+        font-size: 11px;
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .product-body p {
+
+        font-size: 7px;
+
+        line-height: 1.35;
+
+        margin-bottom: 15px;
+
+        min-height: 50px;
+
+    }
+
+
+    .product-price {
+
+        font-size: 7px;
+
+        gap: 3px;
+
+    }
+
+
+    .arrow-icon {
+
+        font-size: 6px;
+
+    }
+
+
+    .btn-buy {
+
+        font-size: 6px;
+
+        padding:
+
+            5px
+
+            7px;
+
+    }
+
+
+    /* Delivery */
+
+    .delivery-banner {
+
+        min-height: 150px;
+
+    }
+
+
+    .delivery-content h2 {
+
+        font-size: 1.4rem;
+
+    }
+
+
+    .delivery-content p {
+
+        font-size: 1rem;
+
+    }
+
+
+    /* Footer */
 
     .footer {
-        grid-template-columns: 1fr 1fr;
-        padding: 35px 25px 20px;
+
+        grid-template-columns:
+
+            1fr
+
+            1fr;
+
+        gap: 20px;
+
+        padding:
+
+            30px
+
+            15px
+
+            15px;
+
     }
 
-    .footer-logo {
-        grid-column: 1 / -1;
+
+    .footer-logo img {
+
+        width: 45px;
+
+        height: 45px;
+
+    }
+
+
+    .footer-logo h2 {
+
+        font-size: 17px;
+
+    }
+
+
+    .footer-column h3 {
+
+        font-size: 10px;
+
+    }
+
+
+    .footer-column a {
+
+        font-size: 8px;
+
+    }
+
+
+    .copyright {
+
+        font-size: 9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   25. VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+
+    .navbar {
+
+        justify-content: space-between;
+
+    }
+
+
+    .product-column {
+
+        padding-left: 5px;
+
+        padding-right: 5px;
+
+    }
+
+
+    .product-img-wrapper {
+
+        width: 95px;
+
+        height: 95px;
+
+        top: 45px;
+
+    }
+
+
+    .product-top-banner {
+
+        height: 100px;
+
+    }
+
+
+    .product-body {
+
+        min-height: 220px;
+
+        padding-top: 55px;
+
+    }
+
+
+    .product-body h4 {
+
+        font-size: 10px;
+
+    }
+
+
+    .product-body p {
+
+        font-size: 6px;
+
+    }
+
+
+    .product-price {
+
+        font-size: 6px;
+
+    }
+
+
+    .btn-buy {
+
+        font-size: 5px;
+
+        padding:
+
+            4px
+
+            6px;
+
     }
 
 }
