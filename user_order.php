@@ -1,3 +1,12 @@
+<?php
+include 'db.php';
+
+$sql = "SELECT address, estimated_arrival FROM tbl_location";
+$result = $conn->query($sql);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
