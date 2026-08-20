@@ -2,66 +2,129 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>H2O2U - Home</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- =========================================
+         BOOTSTRAP CSS
+    ========================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================
+         FONT AWESOME
+    ========================================== -->
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- =========================================
+         CUSTOM CSS
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+    <link
+        rel="stylesheet"
+        href="css/nav&footer.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- Navbar -->
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
 
     <nav class="navbar">
 
+        <!-- LOGO -->
+
         <div class="logo-section">
 
-            <img src="img/logo.png" alt="H2O2U Logo">
+            <img
+                src="img/logo.png"
+                alt="H2O2U Logo"
+            >
 
-            <h2>H2O2U</h2>
+            <h2>
+                H2O2U
+            </h2>
 
         </div>
 
 
+        <!-- NAVIGATION -->
+
         <ul class="nav-links">
 
             <li>
-                <a href="index.html">Home</a>
+                <a href="index.html">
+                    Home
+                </a>
             </li>
 
             <li>
-                <a href="products.html">Products</a>
+                <a href="#products">
+                    Products
+                </a>
             </li>
 
             <li>
-                <a href="#reviews">Reviews</a>
+                <a href="#reviews">
+                    Reviews
+                </a>
             </li>
 
             <li>
-                <a href="contact.html">Contact Us</a>
+                <a href="contact.html">
+                    Contact Us
+                </a>
             </li>
 
         </ul>
 
 
+        <!-- RIGHT BUTTONS -->
+
         <div class="nav-buttons">
 
-            <button class="order-btn">
+            <button
+                type="button"
+                class="order-btn"
+                id="navOrderButton"
+            >
                 ORDER NOW
             </button>
 
-            <a href="profile.html" class="profile">
-            <i class="fa-solid fa-user"></i>
+
+            <a
+                href="user_pf.html"
+                class="profile"
+            >
+
+                <i class="fa-solid fa-user"></i>
+
             </a>
 
         </div>
@@ -73,130 +136,271 @@
     <!-- =========================================
          HERO SECTION
     ========================================== -->
+
     <section class="hero-section">
+
         <div class="container hero-overlay">
+
             <div class="row align-items-center w-100">
+
+
+                <!-- HERO TEXT -->
+
                 <div class="col-lg-7">
+
                     <div class="hero-content">
+
                         <h1>
-                            Delivered Right<br>
-                            To Your Home &<br>
+
+                            Delivered Right
+                            <br>
+
+                            To Your Home &
+                            <br>
+
                             Office Door.
+
                         </h1>
+
+
                         <p>
-                            Fresh and clean drinking water<br>
+
+                            Fresh and clean drinking water
+                            <br>
+
                             delivered directly to you.
+
                         </p>
-                        <button class="hero-button" id="heroOrderButton">ORDER NOW</button>
+
+
+                        <button
+                            type="button"
+                            class="hero-button"
+                            id="heroOrderButton"
+                        >
+
+                            ORDER NOW
+
+                        </button>
+
                     </div>
+
                 </div>
-                <div class="col-lg-5 d-flex justify-content-center justify-content-lg-end mt-4 mt-lg-0">
-                    <!-- LIMITED OFFER -->
+
+
+
+                <!-- LIMITED OFFER -->
+
+                <div
+                    class="col-lg-5 d-flex justify-content-center justify-content-lg-end mt-4 mt-lg-0"
+                >
+
                     <div class="offer-circle">
-                        <span>Limited Offer</span>
-                        <strong>30% OFF</strong>
-                        <img src="images/two-btl.jpg" class="offer-bottle" alt="Water Jugs">
+
+                        <span>
+                            Limited Offer
+                        </span>
+
+
+                        <strong>
+                            30% OFF
+                        </strong>
+
+
+                        <img
+                            src="images/two-btl.jpg"
+                            class="offer-bottle"
+                            alt="Water Bottles"
+                        >
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <!-- =========================================
-         SERVICE ICONS
+         SERVICE SECTION
     ========================================== -->
+
     <section class="service-section">
+
         <div class="container">
+
             <div class="row text-center">
-                <div class="col-6 col-md-3 service-item mb-3 mb-md-0">
-                    <div class="service-icon">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
-                    </div>
-                    <span>Fresh Water</span>
-                </div>
-                <div class="col-6 col-md-3 service-item mb-3 mb-md-0">
-                    <div class="service-icon">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                    </div>
-                    <span>Easy Order</span>
-                </div>
+
+
+                <!-- SERVICE 1 -->
+
                 <div class="col-6 col-md-3 service-item">
+
                     <div class="service-icon">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+
+                        <i class="fa-solid fa-droplet"></i>
+
                     </div>
-                    <span>Fast Delivery</span>
+
+                    <span>
+                        Fresh Water
+                    </span>
+
                 </div>
+
+
+                <!-- SERVICE 2 -->
+
                 <div class="col-6 col-md-3 service-item">
+
                     <div class="service-icon">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
                     </div>
-                    <span>Safe & Clean</span>
+
+                    <span>
+                        Easy Order
+                    </span>
+
                 </div>
+
+
+                <!-- SERVICE 3 -->
+
+                <div class="col-6 col-md-3 service-item">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                    </div>
+
+                    <span>
+                        Fast Delivery
+                    </span>
+
+                </div>
+
+
+                <!-- SERVICE 4 -->
+
+                <div class="col-6 col-md-3 service-item">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+                    <span>
+                        Safe & Clean
+                    </span>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <!-- =========================================
-     PRODUCTS SECTION
+         PRODUCTS SECTION
     ========================================== -->
 
-    <section class="products-section" id="products">
+    <section
+        class="products-section"
+        id="products"
+    >
 
         <div class="container">
+
 
             <!-- SECTION TITLE -->
 
             <div class="section-heading">
 
-                <span>PRODUCTS</span>
+                <span>
+                    PRODUCTS
+                </span>
 
-            <h2>
-                We proudly provide water products.
-            </h2>
+
+                <h2>
+                    We proudly provide water products.
+                </h2>
 
             </div>
 
 
-        <!-- PRODUCT ROW -->
+            <!-- PRODUCT ROW -->
 
-        <div
-            id="productRow"
-            class="row product-row">
+            <div
+                id="productRow"
+                class="row g-4"
+            >
 
-            <!-- Products will be added by JavaScript -->
+                <!-- Products will be created by JavaScript -->
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
 
     <!-- =========================================
          DELIVERY BANNER
     ========================================== -->
+
     <section class="delivery-banner">
+
         <div class="delivery-content">
-            <h2>Delivered fresh to your door</h2>
-            <p>by our team.</p>
+
+            <h2>
+                Delivered fresh to your door
+            </h2>
+
+            <p>
+                by our team.
+            </p>
+
         </div>
+
     </section>
 
-   <!-- =========================
-         REVIEWS
-    ========================== -->
 
-    <section class="reviews-section" id="reviews">
+
+    <!-- =========================================
+         REVIEWS
+    ========================================== -->
+
+    <section
+        class="reviews-section"
+        id="reviews"
+    >
 
         <div class="container">
 
+
             <div class="section-heading">
 
-                <span>REVIEWS</span>
+                <span>
+                    REVIEWS
+                </span>
 
             </div>
 
 
             <div class="row g-4 justify-content-center">
+
 
                 <!-- REVIEW 1 -->
 
@@ -204,31 +408,43 @@
 
                     <div class="review-card">
 
+
                         <div class="review-header">
 
                             <div class="review-user">
 
-                                <div class="user-circle"></div>
+                                <div class="user-circle">
 
-                                <span>John Smith</span>
+                                </div>
+
+                                <span>
+                                    John Smith
+                                </span>
 
                             </div>
 
+
                             <div class="stars">
+
                                 ★★★★★
+
                             </div>
 
                         </div>
 
+
                         <p>
-                            Very satisfied with the water delivery
-                            service. The water is fresh and the
-                            delivery is always on time.
+
+                            Very satisfied with the water
+                            delivery service. The water is fresh
+                            and the delivery is always on time.
+
                         </p>
 
                     </div>
 
                 </div>
+
 
 
                 <!-- REVIEW 2 -->
@@ -237,25 +453,36 @@
 
                     <div class="review-card">
 
+
                         <div class="review-header">
 
                             <div class="review-user">
 
-                                <div class="user-circle"></div>
+                                <div class="user-circle">
 
-                                <span>Jane Davis</span>
+                                </div>
+
+                                <span>
+                                    Jane Davis
+                                </span>
 
                             </div>
 
+
                             <div class="stars">
+
                                 ★★★★★
+
                             </div>
 
                         </div>
 
+
                         <p>
+
                             Excellent service and very convenient
                             ordering system. Highly recommended.
+
                         </p>
 
                     </div>
@@ -269,74 +496,154 @@
     </section>
 
 
-    <!-- Footer -->
 
-<footer class="footer">
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
-    <div class="footer-logo">
-
-        <img src="img/logo.png" alt="H2O2U Logo">
-
-        <h2>H2O2U</h2>
-
-    </div>
+    <footer class="footer">
 
 
-    <div class="footer-column">
+        <!-- FOOTER LOGO -->
 
-        <h3>PRIVACY</h3>
+        <div class="footer-logo">
 
-        <a href="#">Terms of use</a>
-        <a href="#">Privacy policy</a>
-        <a href="#">Cookies</a>
+            <img
+                src="images/logo.png"
+                alt="H2O2U Logo"
+            >
 
-    </div>
+            <h2>
+                H2O2U
+            </h2>
 
-
-    <div class="footer-column">
-
-        <h3>SERVICES</h3>
-
-        <a href="products.html">Products</a>
-        <a href="#">Order</a>
-        <a href="#">Payment</a>
-
-    </div>
+        </div>
 
 
-    <div class="footer-column">
 
-        <h3>ABOUT US</h3>
+        <!-- PRIVACY -->
 
-        <a href="contact.html">Contact</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#">Our story</a>
+        <div class="footer-column">
 
-    </div>
+            <h3>
+                PRIVACY
+            </h3>
 
+            <a href="#">
+                Terms of use
+            </a>
 
-    <div class="footer-column">
+            <a href="#">
+                Privacy policy
+            </a>
 
-        <h3>INFORMATION</h3>
+            <a href="#">
+                Cookies
+            </a>
 
-        <a href="delivery.html">Delivery History</a>
-        <a href="vouchers.html">Vouchers</a>
-        <a href="profile.html">User Profile</a>
-
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 All Right Reserved
-
-    </div>
-
-</footer>
+        </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+
+        <!-- SERVICES -->
+
+        <div class="footer-column">
+
+            <h3>
+                SERVICES
+            </h3>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="order.html">
+                Order
+            </a>
+
+            <a href="#">
+                Payment
+            </a>
+
+        </div>
+
+
+
+        <!-- ABOUT US -->
+
+        <div class="footer-column">
+
+            <h3>
+                ABOUT US
+            </h3>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="#reviews">
+                Reviews
+            </a>
+
+            <a href="#">
+                Our story
+            </a>
+
+        </div>
+
+
+
+        <!-- INFORMATION -->
+
+        <div class="footer-column">
+
+            <h3>
+                INFORMATION
+            </h3>
+
+            <a href="delivery.html">
+                Delivery History
+            </a>
+
+            <a href="vouchers.html">
+                Vouchers
+            </a>
+
+            <a href="profile.html">
+                User Profile
+            </a>
+
+        </div>
+
+
+
+        <!-- COPYRIGHT -->
+
+        <div class="copyright">
+
+            © 2026 All Right Reserved
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         BOOTSTRAP JS
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <!-- =========================================
+         CUSTOM JS
+    ========================================== -->
+
+    <script src="js/script.js"></script>
+
 
 </body>
 

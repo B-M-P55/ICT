@@ -34,162 +34,186 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
 
+
     /* =========================================
-       PRODUCT ROW
+       PRODUCT CONTAINER
     ========================================== */
 
     const productRow =
         document.getElementById("productRow");
 
 
+
+    /* =========================================
+       CREATE PRODUCTS
+    ========================================== */
+
     if (productRow) {
 
-        productRow.innerHTML = products.map(product => `
+        productRow.innerHTML = products.map(function (prod) {
 
-            <div class="product-column">
+            return `
 
+                <div class="col-12 col-md-6">
 
-                <!-- PRODUCT CARD -->
-
-                <div class="product-card">
-
-
-                    <!-- =================================
-                         NAVY TOP
-                    ================================== -->
-
-                    <div class="product-top-banner">
-                    </div>
+                    <div class="product-card">
 
 
-                    <!-- =================================
-                         CIRCULAR PRODUCT IMAGE
-                    ================================== -->
+                        <!-- NAVY TOP -->
 
-                    <div class="product-img-wrapper">
-
-                        <img
-                            src="${product.img}"
-                            alt="${product.name}"
-                        >
-
-                    </div>
-
-
-                    <!-- =================================
-                         PRODUCT INFORMATION
-                    ================================== -->
-
-                    <div class="product-body">
-
-
-                        <h4>
-                            ${product.name}
-                        </h4>
-
-
-                        <p>
-
-                            dui, vehicula, elit tincidunt ipsum eget in sit id
-                            id non tempor tincidunt sit sed diam tortor.
-                            faucibus Nam ipsum urna Ut
-
-                        </p>
-
-
-                        <!-- =================================
-                             PRICE + ORDER
-                        ================================== -->
-
-                        <div class="product-footer">
-
-
-                            <span class="product-price">
-
-                                <span class="arrow-icon">
-                                    ▶
-                                </span>
-
-                                ${product.price}
-
-                            </span>
-
-
-                            <button
-                                type="button"
-                                class="btn-buy"
-                                onclick="orderProduct('${product.name}')">
-
-                                Order now
-
-                            </button>
-
+                        <div class="product-top-banner">
 
                         </div>
 
+
+
+                        <!-- PRODUCT IMAGE -->
+
+                        <div class="product-img-wrapper">
+
+                            <img
+                                src="${prod.img}"
+                                alt="${prod.name}"
+                            >
+
+                        </div>
+
+
+
+                        <!-- PRODUCT BODY -->
+
+                        <div class="product-body">
+
+
+                            <h4>
+                                ${prod.name}
+                            </h4>
+
+
+                            <p>
+
+                                dui, vehicula, elit tincidunt ipsum
+                                eget in sit id id non tempor tincidunt
+                                sit sed diam tortor. faucibus Nam
+                                ipsum urna Ut
+
+                            </p>
+
+
+
+                            <!-- PRODUCT FOOTER -->
+
+                            <div class="product-footer">
+
+
+                                <span class="product-price">
+
+                                    <span class="arrow-icon">
+                                        ▶
+                                    </span>
+
+                                    ${prod.price}
+
+                                </span>
+
+
+
+                                <button
+                                    type="button"
+                                    class="btn-buy"
+                                >
+
+                                    Order now
+
+                                </button>
+
+
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+            `;
 
-        `).join("");
+        }).join("");
+
+
+
+        /* =========================================
+           PRODUCT ORDER BUTTONS
+        ========================================== */
+
+        const productButtons =
+            document.querySelectorAll(".btn-buy");
+
+
+        productButtons.forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "user_order.html";
+
+                }
+            );
+
+        });
 
     }
 
 
+
     /* =========================================
-       ORDER BUTTONS
+       NAVBAR ORDER BUTTON
     ========================================== */
 
-    const orderButtons = [
-        "orderButton",
-        "heroOrderButton",
-        "contactOrderButton"
-    ];
+    const navOrderButton =
+        document.getElementById("navOrderButton");
 
 
-    orderButtons.forEach(id => {
+    if (navOrderButton) {
 
-        const btn =
-            document.getElementById(id);
+        navOrderButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "user_order.html";
+
+            }
+        );
+
+    }
 
 
-        if (btn) {
 
-            btn.addEventListener("click", function () {
+    /* =========================================
+       HERO ORDER BUTTON
+    ========================================== */
 
-                const target =
-                    document.getElementById("products");
+    const heroOrderButton =
+        document.getElementById(
+            "heroOrderButton"
+        );
 
 
-                if (target) {
+    if (heroOrderButton) {
 
-                    target.scrollIntoView({
-                        behavior: "smooth"
-                    });
+        heroOrderButton.addEventListener(
+            "click",
+            function () {
 
-                }
+                window.location.href =
+                    "user_order.html";
 
-            });
+            }
+        );
 
-        }
-
-    });
-
+    }
 
 });
-
-
-/* =========================================
-   PRODUCT ORDER FUNCTION
-========================================== */
-
-function orderProduct(productName) {
-
-    alert(
-        productName + " has been selected."
-    );
-
-}

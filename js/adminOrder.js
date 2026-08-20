@@ -358,8 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     //  SHOWING ENTRIES
 
-    fu
-    nction updateShowingCount() {
+    function updateShowingCount() {
 
         const tableFooter =
             document.querySelector(
