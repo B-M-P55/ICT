@@ -1,3 +1,9 @@
+
+<?php
+include 'db.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,14 +45,14 @@
 
     <div class="menu-section">
         <div class="menu-title">
-            Deliveries
+            <h5>Deliveries</h5>
         </div>
         <a href="delivery-history.html" class="menu-item active">
             • Delivery History
         </a>
-        <a href="#" class="menu-item">
+        <!-- <a href="#" class="menu-item">
             • Delivery Staff
-        </a>
+        </a> -->
     </div>
 
     <a href="#" class="logout">
@@ -128,7 +134,7 @@
             </select>
         </div>
 
-        <table class="admin-table">
+        <table class="admin-table" style="text-align: center;">
             <thead>
                 <tr>
                     <th>Delivery No.</th>
@@ -142,124 +148,58 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Thiri Maung</td>
-                    <td>
-                        No. 123, Main Road,
-                        <br>
-                        Hlaing Township,
-                        Yangon
-                    </td>
-                    <td>
-                        Zaw Lin
-                        <br>
-                        09-38372627
-                    </td>
-                    <td>
-                        July 24, 2026
-                        <br>
-                        12:30 PM
-                    </td>
-                    <td>
-                        <span>2000</span>
-                    </td>
-                    <td>
-                        <button class="edit-btn">
-                            <i class="fa-solid fa-pen"></i> Edit
-                        </button>
-                    </td>
-                </tr>
+            <tbody style="text-align: center;">
+                <?php
+            // Execute query ONLY inside tbody
+            $sql = "SELECT 
+                        d.deliveryID,
+                        d.orderID,
+                        CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
+                        u.address,
+                        drv.name AS driver_name,
+                        drv.phone_number AS driver_phone,
+                        DATE_FORMAT(d.date, '%M %e, %Y') AS delivery_date,
+                        DATE_FORMAT(d.date, '%h:%i %p') AS delivery_time,
+                        d.status
+                    FROM tbl_delivery d
+                    JOIN tbl_order o ON d.orderID = o.order_ID
+                    JOIN tbl_user u ON o.userID = u.userID
+                    JOIN tbl_driver drv ON d.driverID = drv.driverID
+                    ORDER BY d.deliveryID ASC";
 
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>Aung Kyaw</td>
-                    <td>
-                        No. 374, Side Road,
-                        <br>
-                        Insein Township,
-                        Yangon
-                    </td>
-                    <td>
-                        Lin Zaw
-                        <br>
-                        09-297738264
-                    </td>
-                    <td>
-                        July 26, 2026
-                        <br>
-                        2:30 PM
-                    </td>
-                    <td>
-                        <span>4000</span>
-                    </td>
-                    <td>
-                        <button class="edit-btn">
-                            <i class="fa-solid fa-pen"></i> Edit
-                        </button>
-                    </td>
-                </tr>
+            $result = mysqli_query($conn, $sql);
 
-                <tr>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>May Thant</td>
-                    <td>
-                        No. 28, 23rd Road,
-                        <br>
-                        Mayangone Township,
-                        Yangon
-                    </td>
-                    <td>
-                        Myo Myo
-                        <br>
-                        09-38292627
-                    </td>
-                    <td>
-                        July 26, 2026
-                        <br>
-                        2:30 PM
-                    </td>
-                    <td>
-                        <span>9000</span>
-                    </td>
-                    <td>
-                        <button class="edit-btn">
-                            <i class="fa-solid fa-pen"></i> Edit
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>Min Htet</td>
-                    <td>
-                        Success Company, <br>
-                        Hlaing Township, Yangon
-                    </td>
-                    <td>
-                        Khin Khin
-                        <br>
-                        09-38338027
-                    </td>
-                    <td>
-                        July 27, 2026
-                        <br>
-                        16:30 PM
-                    </td>
-                    <td>
-                        <span>1000</span>
-                    </td>
-                    <td>
-                        <button class="edit-btn">
-                            <i class="fa-solid fa-pen"></i> Edit
-                        </button>
-                    </td>
-                </tr>
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['deliveryID']); ?></td>
+                        <td><?php echo htmlspecialchars($row['orderID']); ?></td>
+                        <td><?php echo htmlspecialchars($row['customer_name']); ?></td>
+                        <td><?php echo nl2br(htmlspecialchars($row['address'])); ?></td>
+                        <td>
+                            <?php echo htmlspecialchars($row['driver_name']); ?><br>
+                            <?php echo htmlspecialchars($row['driver_phone']); ?>
+                        </td>
+                        <td>
+                            <?php echo htmlspecialchars($row['delivery_date']); ?><br>
+                            <?php echo htmlspecialchars($row['delivery_time']); ?>
+                        </td>
+                        <td>
+                            <span><?php echo htmlspecialchars(ucfirst($row['status'])); ?></span>
+                        </td>
+                        <td>
+                            <button class="edit-btn">
+                                <i class="fa-solid fa-pen"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo "<tr><td colspan='8'>No records found.</td></tr>";
+            }
+            ?>
             </tbody>
         </table>
 

@@ -1,5 +1,6 @@
 <?php
 
+
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -17,3 +18,12 @@ if ($conn->connect_error) {
 }
 
 $conn->set_charset("utf8mb4");
+
+$conn = mysqli_connect("localhost", "root", "", "h2o2u_db");
+
+// if (!$conn) {
+//     die("Connection Failed: " . mysqli_connect_error());
+// }
+// echo "connected";
+?>
+
