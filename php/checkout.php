@@ -56,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         // Save order info
         $conn->query("INSERT INTO tbl_order (order_date, total_order, total_amount, order_status, userID, location_ID) 
-                      VALUES ('$orderDate', 1, 5000, 'Pending', $userID, $locationID)");
+                      VALUES ('$orderDate', 1, 1000, 'Pending', $userID, $locationID)");
         $orderID = $conn->insert_id;
 
         // Save order items (Product ID 1)
         $conn->query("INSERT INTO tbl_order_details (quantity, price, productID, orderID) 
-                      VALUES (1, 5000, 1, $orderID)");
+                      VALUES (1, 1000, 1, $orderID)");
 
         // Save delivery tracking info
         $trackingNumber = rand(100000, 999999);
@@ -112,7 +112,7 @@ $locationResult = $conn->query("SELECT address, estimated_arrival FROM tbl_locat
 
         <div class="nav-buttons">
             <a href="checkout.php" class="order-btn text-decoration-none">ORDER NOW</a>
-            <a href="profile.html" class="profile">
+            <a href="user_pf.html" class="profile">
                 <i class="fa-solid fa-user"></i>
             </a>
         </div>

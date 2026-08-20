@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // My Order Page
     orderBtn.addEventListener("click", function () {
-        window.location.href = "user_order.html";
+        window.location.href = "user_orders.html";
     });
 
     // Delivery History Page

@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // My Order Page
     if (orderBtn) {
         orderBtn.addEventListener("click", function () {
-            window.location.href = "user_order.html";
+            window.location.href = "user_orders.html";
         });
     }
 

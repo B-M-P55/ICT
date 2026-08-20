@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (orderBtn) {
-        orderBtn.addEventListener("click", () => window.location.href = "user_order.html");
+        orderBtn.addEventListener("click", () => window.location.href = "user_orders.html");
     }
 
     if (deliveryBtn) {

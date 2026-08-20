@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 function () {
 
                     window.location.href =
-                        "user_order.html";
+                        "user_orders.html";
 
                 }
             );
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 window.location.href =
-                    "user_order.html";
+                    "user_orders.html";
 
             }
         );
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 window.location.href =
-                    "user_order.html";
+                    "user_orders.html";
 
             }
         );

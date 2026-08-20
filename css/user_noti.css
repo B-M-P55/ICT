@@ -5,13 +5,13 @@
 body {
     margin: 0;
     padding: 0;
-    background: #202020;
+    background: #1e1e1e;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile-page {
     width: calc(100% - 30px);
-    height: 663px;
+    min-height: 683px;
     margin: 0 15px;
     display: flex;
     background: #fff;
@@ -80,7 +80,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 32px;
+    gap: 32px; /* Perfect spacing between items */
 }
 
 .sidebar-item {
@@ -131,14 +131,14 @@ body {
     color: #a9ef57;
 }
 
-/* RIGHT CONTENT AREA */
+/* CONTENT & NOTIFICATION CARD */
 .content {
     width: 62%;
-    background: #ffffff;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 40px;
 }
 
 .notification-content {
@@ -147,58 +147,48 @@ body {
     justify-content: center;
 }
 
-/* NOTIFICATION CARD (Matches UI image radius and padding) */
 .notification-card {
     width: 100%;
-    max-width: 500px;
-    padding: 45px 50px;
-    background: #fbfbfb;
-    border-radius: 45px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    max-width: 520px;
+    padding: 40px 45px;
+    background: #fafafa;
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid #f0f0f0;
 }
 
-.notification-section {
-    width: 100%;
-}
-
 .notification-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #333333;
-    margin: 0 0 25px 0;
-    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    color: #11136b;
+    margin-bottom: 25px;
 }
 
-/* ROW LAYOUT FOR LABELS & TOGGLES */
 .notification-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-left: 25px; /* Indents text relative to title */
+    margin-bottom: 18px;
 }
 
 .notification-label {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: #444444;
-    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
 }
 
 .notification-divider {
     height: 1px;
-    background: #e8e8e8;
-    margin: 25px 0 30px 0;
+    background: #e5e5e5;
+    margin: 25px 0;
 }
 
-/* TOGGLE SWITCHES (Custom Pill Track with Rounded-Square Handle) */
+/* TOGGLE SWITCHES */
 .toggle {
     position: relative;
-    width: 44px;
-    height: 24px;
+    width: 42px;
+    height: 22px;
     display: inline-block;
-    flex-shrink: 0;
 }
 
 .toggle input {
@@ -213,23 +203,22 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #b0bfc6;
-    border-radius: 12px;
+    background: #ccc;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: 0.3s;
 }
 
 .toggle-slider::before {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 2px;
-    bottom: 2px;
-    background: #ffffff;
-    border-radius: 6px; /* Creates the rounded-square shape seen in image */
-    transition: transform 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
 }
 
 .toggle input:checked + .toggle-slider {
@@ -245,20 +234,10 @@ body {
     .profile-page {
         width: 100%;
         margin: 0;
-        height: auto;
         flex-direction: column;
     }
 
     .sidebar, .content {
         width: 100%;
-    }
-
-    .notification-card {
-        padding: 30px 20px;
-        border-radius: 25px;
-    }
-
-    .notification-row {
-        padding-left: 0;
     }
 }
