@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             name: "Bottled Water",
             price: "1000 Ks.",
-            img: "images/two-btl.jpg"
+            img: "img/bottle.jpg"
         },
 
         {
