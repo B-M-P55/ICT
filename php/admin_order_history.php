@@ -145,7 +145,7 @@ $orderResult = $orderQuery->get_result();
                 <input type="text" class="filter-input" placeholder="Search by Order No., Customer...">
             </div>
 
-            <table class="admin-table">
+            <table class="admin-table" style="text-align: center;">
                 <thead>
                     <tr>
                         <th>Order No.</th>
@@ -156,7 +156,7 @@ $orderResult = $orderQuery->get_result();
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="text-align: center;">
                     <?php if ($orderResult && $orderResult->num_rows > 0): ?>
                         <?php while($row = $orderResult->fetch_assoc()): ?>
                             <tr>
