@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['admin_name'] = $admin['name'];
                 $_SESSION['role']       = 'admin';
 
-                header("Location: ../admin_order.html");
+                header("Location: ../admin/admin_products.php");
                 exit();
             } else {
                 $error = "Invalid email or password.";
