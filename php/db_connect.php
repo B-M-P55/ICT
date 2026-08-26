@@ -11,4 +11,8 @@ if ($conn->connect_error) {
 }
 
 $conn->set_charset("utf8mb4");
+
+
+// kmn
+// $conn = mysqli_connect("localhost", "root", "", "h2o2u_db");
 ?>

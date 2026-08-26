@@ -1,5 +1,6 @@
 <?php
-include 'db.php';
+session_start();
+include 'db_connect.php';
 
 // 1. Get Search Input
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -45,7 +46,7 @@ if (!empty($search)) {
             JOIN tbl_order o ON d.orderID = o.order_ID
             JOIN tbl_user u ON o.userID = u.userID
             JOIN tbl_driver drv ON d.driverID = drv.driverID
-            ORDER BY d.deliveryID ASC";
+            ORDER BY d.deliveryID DESC";
 
     $result = mysqli_query($conn, $sql);
 }
@@ -71,7 +72,7 @@ $total_delivered = $row_delivered['delivered_count'];
     <title>Admin Delivery</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
@@ -79,7 +80,7 @@ $total_delivered = $row_delivered['delivered_count'];
 <!-- Sidebar -->
 <aside class="sidebar">
     <div class="logo-area">
-        <img src="img/logo.png" class="logo" alt="Logo">
+        <img src="../img/logo.png" class="logo" alt="Logo">
         <span class="logo-name">H2O2U</span>
     </div>
 
