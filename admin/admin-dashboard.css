@@ -1,5 +1,10 @@
 /* Compatibility file for older admin pages.
    New page-specific styles are kept in the files below. */
 @import url('admin-nav.css');
+
+
+
+@import url('dashboard.css');
+
 @import url('products.css');
 @import url('stock.css');

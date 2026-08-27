@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/admin/database.php';
 
+
 $isAdminView = isset($_GET['admin']);
+
 
 $db = database();
 $products = $db->query(
@@ -21,6 +23,7 @@ $products = $db->query(
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Products | H2O2U</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <?php if (!$isAdminView): ?>
     <link rel="stylesheet" href="css/nav&footer.css">
     <?php endif; ?>
@@ -28,6 +31,11 @@ $products = $db->query(
 </head>
 <body class="customer-products">
     <?php if (!$isAdminView): ?>
+    <link rel="stylesheet" href="css/nav&footer.css">
+    <link rel="stylesheet" href="customer-products.css">
+</head>
+<body class="customer-products">
+
     <nav class="navbar">
         <div class="logo-section">
             <img src="img/logo.png" alt="H2O2U Logo">
@@ -43,7 +51,9 @@ $products = $db->query(
             <button class="order-btn" onclick="window.location.href='user_orders.html'">ORDER NOW</button>
         </div>
     </nav>
+
     <?php endif; ?>
+
 
     <header class="customer-hero">
         <p>FRESH WATER, DELIVERED</p>
@@ -86,7 +96,9 @@ $products = $db->query(
         </section>
     </main>
 
+
     <?php if (!$isAdminView): ?>
+
     <footer class="footer">
         <div class="footer-logo"><img src="img/logo.png" alt="H2O2U Logo"><h2>H2O2U</h2></div>
         <div class="footer-column"><h3>PRIVACY</h3><a href="#">Terms of use</a><a href="#">Privacy policy</a><a href="#">Cookies</a></div>
@@ -96,6 +108,9 @@ $products = $db->query(
         <div class="copyright">&copy; 2026 All Right Reserved</div>
     </footer>
     <script src="js/navbar.js"></script>
+
     <?php endif; ?>
+
+
 </body>
 </html>
