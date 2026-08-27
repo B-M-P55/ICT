@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <ul class="nav-links">
             <li><a href="../homepage.html">Home</a></li>
-            <li><a href="../homepage.html#products">Products</a></li>
+            <li><a href="../products.php">Products</a></li>
             <li><a href="../homepage.html#reviews">Reviews</a></li>
             <li><a href="../contact.html">Contact Us</a></li>
         </ul>

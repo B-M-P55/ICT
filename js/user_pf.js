@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Back to Homepage
     backBtn.addEventListener("click", function () {
-        window.location.href = "homepage.html";
+        window.location.href = "index.html";
     });
 
     /* SAVE FORM LOGIC */
