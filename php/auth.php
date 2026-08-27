@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 header("Location: ../admin/admin_dashboard.php");
 
-                header("Location: ../admin/admin_products.php");
+               
 
                 exit();
             } else {
