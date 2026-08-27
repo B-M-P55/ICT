@@ -1,6 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
     var productRow = document.getElementById("productRow");
+
+
+    var productRow = document.getElementById("productRow");
+
+
+    var productRow = document.getElementById("productRow");
+
+    /* =========================================
+       PRODUCT DATA
+    ========================================== */
+
+    const products = [
+
+        {
+            name: "Bottled Water",
+            price: "1000 Ks.",
+            img: "img/bottle.jpg"
+        },
+
+        {
+            name: "Bottled Water",
+            price: "1000 Ks.",
+            img: "images/two-btl.jpg"
+        },
+
+        {
+            name: "Bottled Water",
+            price: "1000 Ks.",
+            img: "images/two-btl.jpg"
+        },
+
+        {
+            name: "Bottled Water",
+            price: "1000 Ks.",
+            img: "images/two-btl.jpg"
+        }
+
+    ];
+
+
+
+    /* =========================================
+       PRODUCT CONTAINER
+    ========================================== */
+
+    const productRow =
+        document.getElementById("productRow");
+
+
+
+    /* =========================================
+       CREATE PRODUCTS
+    ========================================== */
+
+
+
 
     if (productRow) {
 
