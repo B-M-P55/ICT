@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include 'db_connect.php';
 
 // 1. Get Search Input
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -71,7 +71,7 @@ $total_delivered = $row_delivered['delivered_count'];
     <title>Admin Delivery</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
@@ -79,7 +79,7 @@ $total_delivered = $row_delivered['delivered_count'];
 <!-- Sidebar -->
 <aside class="sidebar">
     <div class="logo-area">
-        <img src="img/logo.png" class="logo" alt="Logo">
+        <img src="../img/logo.png" class="logo" alt="Logo">
         <span class="logo-name">H2O2U</span>
     </div>
 
@@ -90,7 +90,7 @@ $total_delivered = $row_delivered['delivered_count'];
     <div class="menu-section">
         <div class="menu-title">Vouchers</div>
         <a href="order-history.html" class="menu-item">• Order History</a>
-        <a href="payment-transactions.html" class="menu-item">• Payment Transactions</a>
+        <a href="admin_payment.php" class="menu-item">• Payment Transactions</a>
     </div>
 
     <div class="menu-section">
@@ -223,7 +223,7 @@ $total_delivered = $row_delivered['delivered_count'];
 
 </main>
 
-<script src="js/admin.js"></script>
+<script src="../js/admin.js"></script>
 
 </body>
 </html>
