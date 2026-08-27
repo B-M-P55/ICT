@@ -2,9 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Connect to your database using the provided database() function
-require_once 'db_connect.php'; 
-$pdo = database();
+// Include your MySQLi connection from the parent directory
+require_once __DIR__ . '/../php/db_connect.php';
 
 $jsMessage = "";
 $jsType = "";
@@ -13,32 +12,30 @@ $jsType = "";
 if (isset($_GET['delete_id'])) {
     $deleteID = intval($_GET['delete_id']);
     
+    $conn->begin_transaction();
     try {
-        $pdo->beginTransaction();
+        // Delete child items first, then delivery, then parent order using tbl_order
+        $conn->query("DELETE FROM tbl_order_details WHERE orderID = $deleteID");
+        $conn->query("DELETE FROM tbl_delivery WHERE orderID = $deleteID");
+        $resOrder = $conn->query("DELETE FROM tbl_order WHERE order_ID = $deleteID");
         
-        // Delete child items first, then delivery, then parent order matching your database schema
-        $stmtDetail = $pdo->prepare("DELETE FROM tbl_order_details WHERE orderID = ?");
-        $stmtDetail->execute([$deleteID]);
-
-        $stmtDelivery = $pdo->prepare("DELETE FROM tbl_delivery WHERE orderID = ?");
-        $stmtDelivery->execute([$deleteID]);
-
-        $stmtOrder = $pdo->prepare("DELETE FROM tbl_order WHERE order_ID = ?");
-        $stmtOrder->execute([$deleteID]);
+        if (!$resOrder) {
+            throw new Exception("Delete failed: " . $conn->error);
+        }
         
-        $pdo->commit();
+        $conn->commit();
         $jsMessage = "Order #{$deleteID} deleted successfully!";
         $jsType = "success";
     } catch (Exception $e) {
-        $pdo->rollBack();
+        $conn->rollback();
         $jsMessage = "Delete Error: " . $e->getMessage();
         $jsType = "error";
     }
 }
 
-// Fetch Summary (All time total orders count)
-$totalOrdersStmt = $pdo->query("SELECT COUNT(*) AS total_order FROM tbl_order");
-$summaryData = $totalOrdersStmt->fetch() ?: ['total_order' => 0];
+// Fetch Summary (All time total orders count) using tbl_order
+$totalOrdersQuery = $conn->query("SELECT COUNT(*) AS total_order FROM tbl_order");
+$summaryData = $totalOrdersQuery ? $totalOrdersQuery->fetch_assoc() : ['total_order' => 0];
 $totalOrders = $summaryData['total_order'] ?? 0;
 
 // Pagination Configuration
@@ -49,19 +46,18 @@ $offset = ($page - 1) * $resultsPerPage;
 
 $totalPages = ceil($totalOrders / $resultsPerPage);
 
-// Fetch Order History matching your database columns (`tbl_order` and `tbl_user` tables)
-$orderQuery = $pdo->prepare("
+// Fetch Order History using prepared statement for MySQLi
+$orderQuery = $conn->prepare("
     SELECT o.order_ID, o.order_date, o.total_order, o.total_amount, o.userID, o.location_ID, 
            u.first_name, u.last_name 
     FROM tbl_order o
     JOIN tbl_user u ON o.userID = u.userID
     ORDER BY o.order_ID ASC
-    LIMIT :limit OFFSET :offset
+    LIMIT ?, ?
 ");
-$orderQuery->bindValue(':limit', $resultsPerPage, PDO::PARAM_INT);
-$orderQuery->bindValue(':offset', $offset, PDO::PARAM_INT);
+$orderQuery->bind_param("ii", $offset, $resultsPerPage);
 $orderQuery->execute();
-$orderResult = $orderQuery->fetchAll();
+$orderResult = $orderQuery->get_result();
 $activePage = 'order_history';
 ?>
 <!DOCTYPE html>
@@ -101,7 +97,7 @@ $activePage = 'order_history';
         <button type="button" class="btn-close" onclick="hideToast()"></button>
     </div>
 
-    <?> 
+    <?php 
     if (file_exists(__DIR__ . '/admin_sidebar.php')) {
         include __DIR__ . '/admin_sidebar.php';
     } else {
@@ -175,8 +171,8 @@ $activePage = 'order_history';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($orderResult)): ?>
-                            <?php foreach($orderResult as $row): ?>
+                        <?php if ($orderResult && $orderResult->num_rows > 0): ?>
+                            <?php while($row = $orderResult->fetch_assoc()): ?>
                                 <tr>
                                     <td>#<?php echo $row['order_ID']; ?></td>
                                     <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
@@ -189,7 +185,7 @@ $activePage = 'order_history';
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php endwhile; ?>
                         <?php else: ?>
                             <tr>
                                 <td colspan="6" class="py-4 text-muted">No order history found.</td>
@@ -201,7 +197,7 @@ $activePage = 'order_history';
 
             <div class="d-flex justify-content-between align-items-center m-2 p-2 border-top">
                 <span class="text-muted m-0 p-2">
-                    Showing <?php echo count($orderResult); ?> of <?php echo $totalOrders; ?> entries
+                    Showing <?php echo $orderResult ? $orderResult->num_rows : 0; ?> of <?php echo $totalOrders; ?> entries
                 </span>
 
                 <div class="pagination m-0 p-2">

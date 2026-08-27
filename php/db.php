@@ -13,8 +13,6 @@ function database(): PDO
 
     $name = getenv('H2O2U_DB_NAME') ?: 'h2';
 
-    $name = getenv('H2O2U_DB_NAME') ?: 'h2_db';
-
     $user = getenv('H2O2U_DB_USER') ?: 'root';
     $password = getenv('H2O2U_DB_PASSWORD') ?: '';
 
