@@ -1,20 +1,45 @@
 <?php
 session_start();
-require_once __DIR__ . '/adminauth.php'; // Ensures database() is loaded if defined here
- 
+require_once __DIR__ . '/adminauth.php'; 
+$activePage = 'delivery';
 
 // Fallback: If $conn isn't set, grab database() instance
 if (!isset($conn) && function_exists('database')) {
     $db = database();
 }
 
+// ------------------------------------------------------------------
+// 0. Handle Status Update Form Submissions
+// ------------------------------------------------------------------
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deliveryID'], $_POST['status'])) {
+    $id = intval($_POST['deliveryID']);
+    $status = strtolower(trim($_POST['status']));
+
+    $allowed_statuses = ['pending', 'shipping', 'delivered'];
+
+    if (in_array($status, $allowed_statuses, true)) {
+        // Fixed: changed $pdo to $db and $deliveryID to $id
+        $stmt = $db->prepare("UPDATE tbl_delivery SET status = ? WHERE deliveryID = ?");
+        $stmt->execute([$status, $id]);
+
+        // Redirect to preserve pagination/search query parameters
+        $queryString = !empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '';
+        header("Location: admin_delivery.php" . $queryString);
+        exit();
+    }
+}
+
+// ------------------------------------------------------------------
 // 1. Get Search Input & Pagination
+// ------------------------------------------------------------------
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $resultsPerPage = 5;
 $offset = ($page - 1) * $resultsPerPage;
 
+// ------------------------------------------------------------------
 // 2. Count Total Records
+// ------------------------------------------------------------------
 if (!empty($search)) {
     $countSql = "SELECT COUNT(*) AS total FROM tbl_delivery d
                  JOIN tbl_order o ON d.orderID = o.order_ID
@@ -30,7 +55,9 @@ if (!empty($search)) {
 
 $totalPages = max(1, ceil($total_deliveries / $resultsPerPage));
 
+// ------------------------------------------------------------------
 // 3. Main Query with LIMIT & OFFSET
+// ------------------------------------------------------------------
 $baseSelect = "SELECT
                 d.deliveryID, d.orderID, u.address, d.status,
                 CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
@@ -59,9 +86,10 @@ if (!empty($search)) {
     $deliveries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// 4. Summary Counter
-$total_delivered = $db->query("SELECT COUNT(*) AS count FROM tbl_delivery WHERE status = 'Delivered'")->fetch(PDO::FETCH_ASSOC)['count'];
-$activePage = 'delivery';
+// ------------------------------------------------------------------
+// 4. Summary Counter (Case-insensitive matching for status)
+// ------------------------------------------------------------------
+$total_delivered = $db->query("SELECT COUNT(*) AS count FROM tbl_delivery WHERE LOWER(status) = 'delivered'")->fetch(PDO::FETCH_ASSOC)['count'];
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +108,6 @@ $activePage = 'delivery';
 <body class="admin-app">
 
 <?php 
-// Include shared admin sidebar if available, or fall back to local markup
 if (file_exists(__DIR__ . '/admin_sidebar.php')) {
     include __DIR__ . '/admin_sidebar.php';
 } else {
@@ -108,7 +135,6 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
 
 <main class="container">
 
-    <!-- Dashboard Top Header matching Product page -->
     <header class="dashboard-top mb-4">
         <div>
             <p class="eyebrow">Deliveries</p>
@@ -122,41 +148,46 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
     </header>
 
     <section class="summary">
-
         <div class="summary-card">
-             <p class="text-muted mb-1">Total Deliveries</p>
-                    <h2 class="fw-bold mb-0"><?php echo number_format($total_deliveries); ?></h2>
-                    <small class="text-secondary">All time</small>
-                    <span class="card-icon">
-
-                <i class="fa-solid fa-clipboard-list"></i>
-
+            <h6>
+                Total Deliveries
+            </h6>
+            <h2 class="fw-bold mb-0"><?php echo number_format($total_deliveries); ?></h2>
+            <p>
+                All time
+            </p>
+            <span class="card-icon">
+                <i class="fa-solid fa-truck"></i>
             </span>
-
         </div>
-
-
 
         <div class="summary-card">
-            <p class="text-muted mb-1">Delivered</p>
-                    <h2 class="fw-bold text-primary mb-0"><?php echo number_format($total_delivered); ?></h2>
-                    <small class="text-secondary">All time</small>
-
+            <h6>
+                Delivered
+            </h6>
+            <h2 class="fw-bold mb-0"><?php echo number_format($total_delivered); ?></h2>
+            <p>
+                All time
+            </p>
+            <span class="card-icon">
+                <i class="fa-solid fa-truck-fast"></i>
+            </span>
         </div>
-
-
-
         <div class="summary-card">
-            <p class="text-muted mb-1">Available Address</p>
-                    <h2 class="fw-bold mb-0">3 Townships</h2>
-                    <small class="text-secondary">Yangon</small>
-                    
+            <h6>
+                Avaliable Address
+            </h6>
+            <h2 class="fw-bold mb-0">Townships</h2>
+            <p>
+                Yangon
+            </p>
+            <span class="card-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </span>
         </div>
-
+        
     </section>
 
-
-    <!-- Table & Search Section -->
     <section class="admin-panel">
         <div class="row mb-4 align-items-center p-3">
             <div class="col-md-6">
@@ -192,6 +223,7 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
                 <tbody>
     <?php if (!empty($deliveries)): ?>
         <?php foreach ($deliveries as $row): ?>
+            <?php $statusVal = strtolower($row['status']); ?>
             <tr>
                 <td><?= htmlspecialchars($row['deliveryID']); ?></td>
                 <td><?= htmlspecialchars($row['orderID']); ?></td>
@@ -206,9 +238,25 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
                     <small class="text-muted"><?= htmlspecialchars($row['delivery_time']); ?></small>
                 </td>
                 <td>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
-                        <?= htmlspecialchars(ucfirst($row['status'])); ?>
-                    </span>
+                    <!-- Updated form action to post directly to admin_delivery.php -->
+                    <form action="admin_delivery.php<?= !empty($_SERVER['QUERY_STRING']) ? '?' . htmlspecialchars($_SERVER['QUERY_STRING']) : ''; ?>" method="POST" class="d-inline">
+                        <input type="hidden" name="deliveryID" value="<?= htmlspecialchars($row['deliveryID']); ?>">
+                        <select name="status" class="form-select form-select-sm fw-semibold 
+                            <?php 
+                                switch ($statusVal) {
+                                    case 'delivered': echo 'text-success border-success bg-success-subtle'; break;
+                                    case 'shipping':  echo 'text-primary border-primary bg-primary-subtle'; break;
+                                    default:          echo 'text-warning border-warning bg-warning-subtle'; break;
+                                }
+                            ?>" 
+                            onchange="this.form.submit()">
+                            
+                            <option value="pending" <?= $statusVal === 'pending' ? 'selected' : ''; ?>>Pending</option>
+                            <option value="shipping" <?= $statusVal === 'shipping' ? 'selected' : ''; ?>>Shipping</option>
+                            <option value="delivered" <?= $statusVal === 'delivered' ? 'selected' : ''; ?>>Delivered</option>
+                            
+                        </select>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -219,10 +267,9 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
             </table>
         </div>
 
-        <!-- Footer & Pagination -->
         <div class="d-flex justify-content-between align-items-center m-2 p-2 border-top">
             <span class="text-muted m-0 p-2">
-            Showing <?php echo !empty($deliveries) ? count($deliveries) : 0; ?> of <?php echo $total_deliveries; ?> entries
+                Showing <?php echo !empty($deliveries) ? count($deliveries) : 0; ?> of <?php echo $total_deliveries; ?> entries
             </span>
 
             <div class="pagination m-0 p-2">

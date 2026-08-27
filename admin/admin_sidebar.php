@@ -13,8 +13,9 @@
         
         <a class="side-link <?= $activePage === 'payments' ? 'active' : '' ?>" href="admin_payments.php"><i class="fa-solid fa-wallet"></i>Payments</a>
 
+        <a class="side-link <?= $activePage === 'delivery' ? 'active' : '' ?>" href="admin_delivery.php"><i class="fa-solid fa-wallet"></i>Deliveries</a>
 
-        <a class="side-link" href="admin_delivery.php"><i class="fa-solid fa-truck-fast"></i>Deliveries</a>
+       
 
        
 
