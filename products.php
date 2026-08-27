@@ -65,9 +65,6 @@ $products = $db->query(
 
 
 
-    <?php endif; ?>
-
-
     <header class="customer-hero">
         <p>FRESH WATER, DELIVERED</p>
         <h1>Our water products</h1>

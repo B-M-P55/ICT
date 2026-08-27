@@ -127,6 +127,11 @@ if (file_exists(__DIR__ . '/admin_sidebar.php')) {
              <p class="text-muted mb-1">Total Deliveries</p>
                     <h2 class="fw-bold mb-0"><?php echo number_format($total_deliveries); ?></h2>
                     <small class="text-secondary">All time</small>
+                    <span class="card-icon">
+
+                <i class="fa-solid fa-clipboard-list"></i>
+
+            </span>
 
         </div>
 

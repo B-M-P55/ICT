@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         <div class="nav-buttons">
             <button class="order-btn" onclick="window.location.href='../user_orders.html'">ORDER NOW</button>
 
-            <a href="../user_pf.html" class="profile"><i class="fa-solid fa-user"></i></a>
+            <!-- <a href="../user_pf.html" class="profile"><i class="fa-solid fa-user"></i></a> -->
 
         </div>
     </nav>
