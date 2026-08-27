@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (productRow) {
 
-        fetch("php/get_products.php")
+        fetch("php/get_products_2.php")
             .then(function (response) {
                 return response.json();
             })
@@ -47,20 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Failed to load products:", error);
             });
 
-    }
-
-    var navOrderButton = document.getElementById("navOrderButton");
-    if (navOrderButton) {
-        navOrderButton.addEventListener("click", function () {
-            window.location.href = "user_orders.html";
-        });
-    }
-
-    var heroOrderButton = document.getElementById("heroOrderButton");
-    if (heroOrderButton) {
-        heroOrderButton.addEventListener("click", function () {
-            window.location.href = "user_orders.html";
-        });
     }
 
 });
