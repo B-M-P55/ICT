@@ -137,7 +137,11 @@ $activePage = 'products';
 
             <a href="../products.php?admin=1" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Customer view</a>
 
+
+            <a href="../products.php?admin=1" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Customer view</a>
+
             <a href="products.php" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Customer view</a>
+
 
         </div>
         <div class="catalogue-grid">
@@ -161,7 +165,11 @@ $activePage = 'products';
 
                             <button type="button" class="btn btn-outline-primary btn-sm" onclick="var el=document.getElementById('edit<?= (int)$product['productID'] ?>');el.style.display=el.style.display==='none'?'block':'none';"><i class="fa-solid fa-pen"></i> Edit</button>
 
+
+                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="var el=document.getElementById('edit<?= (int)$product['productID'] ?>');el.style.display=el.style.display==='none'?'block':'none';"><i class="fa-solid fa-pen"></i> Edit</button>
+
                             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#edit<?= (int)$product['productID'] ?>"><i class="fa-solid fa-pen"></i> Edit</button>
+
 
 
                             <?php if ($product['is_active']): ?>
@@ -177,7 +185,11 @@ $activePage = 'products';
 
                     <div id="edit<?= (int)$product['productID'] ?>" style="display:none; padding:15px; border-top:1px solid #e5edf3; background:#f9fbfd;">
 
+
+                    <div id="edit<?= (int)$product['productID'] ?>" style="display:none; padding:15px; border-top:1px solid #e5edf3; background:#f9fbfd;">
+
                     <div class="collapse product-edit" id="edit<?= (int)$product['productID'] ?>">
+
 
 
                         <form method="post" enctype="multipart/form-data" class="edit-grid">

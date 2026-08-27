@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var productRow = document.getElementById("productRow");
 
+
+    var productRow = document.getElementById("productRow");
+
     /* =========================================
        PRODUCT DATA
     ========================================== */
@@ -52,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* =========================================
        CREATE PRODUCTS
     ========================================== */
+
 
 
 

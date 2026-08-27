@@ -37,9 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 header("Location: ../homepage.html");
                 exit();
 
+
+                header("Location: ../homepage.html");
+                exit();
+
                 $signupSuccess = "Account created successfully! You can now log in.";
                // header("Location: ../homepage.html");
                 //exit();
+
 
 
 
@@ -150,7 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </ul>
         <div class="nav-buttons">
             <button class="order-btn" onclick="window.location.href='../user_orders.html'">ORDER NOW</button>
+
             <a href="../user_pf.html" class="profile"><i class="fa-solid fa-user"></i></a>
+
         </div>
     </nav>
 
