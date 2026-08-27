@@ -17,7 +17,7 @@
 
         <a class="side-link" href="admin_delivery.php"><i class="fa-solid fa-truck-fast"></i>Deliveries</a>
 
-        <a class="side-link" href="admin_delivery.html"><i class="fa-solid fa-user-group"></i>Delivery staff</a>
+       
 
 
     </nav>
