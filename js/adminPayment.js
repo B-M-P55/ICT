@@ -1,268 +1,180 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const tableBody =
-        document.getElementById("paymentTableBody");
+    const tableBody = document.getElementById("paymentTableBody");
+    const searchBox = document.querySelector(".search-box");
 
-    const searchBox =
-        document.querySelector(".search-box");
+    // =========================================
+    // LOAD PAYMENT RECORDS
+    // =========================================
 
-    const paginationButtons =
-        document.querySelectorAll(".pagination button");
-
-
-    /* =========================================
-       LOAD PAYMENTS
-    ========================================== */
-
-    async function loadPayments() {
-
-        try {
-
-            const response =
-                await fetch(
-                    "php/get_payment_history.php"
-                );
-
-            const result =
-                await response.json();
+    loadPayments();
 
 
-            if (!result.success) {
+    function loadPayments() {
 
-                alert(
-                    result.message ||
-                    "Failed to load payments."
-                );
+        fetch("../php/get_payment_history.php")
+            .then(response => response.json())
+            .then(data => {
 
-                return;
-            }
+                if (!data.success) {
+                    alert("Unable to load payment records.");
+                    return;
+                }
 
+                displayPayments(data.payments);
 
-            renderPayments(
-                result.payments
-            );
+            })
+            .catch(error => {
 
+                console.error("Error:", error);
 
-        } catch (error) {
+                alert("Unable to load payment records.");
 
-            console.error(
-                "Payment loading error:",
-                error
-            );
-
-            alert(
-                "Unable to connect to payment server."
-            );
-        }
+            });
     }
 
 
-    /* =========================================
-       RENDER PAYMENTS
-    ========================================== */
+    // =========================================
+    // DISPLAY PAYMENT RECORDS
+    // =========================================
 
-    function renderPayments(payments) {
+    function displayPayments(payments) {
 
         tableBody.innerHTML = "";
-
 
         if (payments.length === 0) {
 
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan="8"
-                        style="text-align:center;">
+                    <td colspan="6" style="text-align:center;">
                         No payment records found.
                     </td>
                 </tr>
             `;
 
-            updateSummary([]);
-
             return;
         }
 
 
-        payments.forEach(function (payment) {
+        payments.forEach(payment => {
 
-            const row =
-                document.createElement("tr");
+            const row = document.createElement("tr");
 
+            // Database status → Display status
+            let statusText = "";
+            let statusClass = "";
+            let statusIcon = "";
 
-            /* -------------------------------
-               ORDER NUMBER
-            -------------------------------- */
+            if (payment.payment_status === "completed") {
 
-            const orderCell =
-                document.createElement("td");
+                statusText = "Paid";
+                statusClass = "paid";
+                statusIcon = "fa-circle-check";
 
-            orderCell.textContent =
-                "#" + payment.order_ID;
+            } else if (payment.payment_status === "unpaid") {
 
-
-            /* -------------------------------
-               CUSTOMER NAME
-            -------------------------------- */
-
-            const customerCell =
-                document.createElement("td");
-
-            customerCell.textContent =
-                payment.customer_name;
-
-
-            /* -------------------------------
-               PAYMENT AMOUNT
-            -------------------------------- */
-
-            const amountCell =
-                document.createElement("td");
-
-            amountCell.textContent =
-                Number(
-                    payment.payment_amount
-                ).toLocaleString() + " Ks";
-
-
-            /* -------------------------------
-               PAYMENT DATE
-            -------------------------------- */
-
-            const dateCell =
-                document.createElement("td");
-
-            const paymentDate =
-                new Date(
-                    payment.payment_date
-                );
-
-            dateCell.innerHTML =
-                formatDate(paymentDate);
-
-
-            /* -------------------------------
-               PAYMENT METHOD
-            -------------------------------- */
-
-            const methodCell =
-                document.createElement("td");
-
-            if (
-                payment.payment_method ===
-                "Kpay"
-            ) {
-
-                methodCell.innerHTML = `
-                    <i class="fa-solid
-                       fa-mobile-screen-button">
-                    </i>
-                    KBZ Pay
-                `;
+                statusText = "Unpaid";
+                statusClass = "unpaid";
+                statusIcon = "fa-circle-xmark";
 
             } else {
 
-                methodCell.innerHTML = `
-                    <i class="fa-solid
-                       fa-money-bill-wave">
-                    </i>
-                    Cash On Delivery
-                `;
+                statusText = "Pending";
+                statusClass = "pending";
+                statusIcon = "fa-clock";
+
             }
 
 
-            /* -------------------------------
-               PAYMENT STATUS
-            -------------------------------- */
-
-            const statusCell =
-                document.createElement("td");
-
-            statusCell.appendChild(
-                createPaymentStatus(
-                    payment
-                )
-            );
-
-
-            /* -------------------------------
-               DELIVERY STATUS
-            -------------------------------- */
-
-            const deliveryCell =
-                document.createElement("td");
-
-            deliveryCell.appendChild(
-                createDeliveryStatus(
-                    payment.delivery_status
-                )
-            );
-
-
-            /* -------------------------------
-               PAYMENT PROOF
-            -------------------------------- */
-
-            const proofCell =
-                document.createElement("td");
+            // Payment method icon
+            let methodIcon = "";
 
             if (
-                payment.payment_photo
+                payment.payment_method.toLowerCase() === "kpay"
             ) {
 
-                const proofButton =
-                    document.createElement("button");
+                methodIcon = "fa-mobile-screen-button";
 
-                proofButton.className =
-                    "edit-btn";
+            } else {
 
-                proofButton.innerHTML = `
-                    <i class="fa-solid fa-file">
-                    </i>
-                    View File
-                `;
+                methodIcon = "fa-money-bill-wave";
 
-                proofButton.addEventListener(
-                    "click",
-                    function () {
+            }
 
-                        viewPaymentProof(
-                            payment.payment_photo
-                        );
 
+            // Format date
+            const paymentDate =
+                new Date(payment.payment_date);
+
+            const formattedDate =
+                paymentDate.toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric"
                     }
                 );
 
-                proofCell.appendChild(
-                    proofButton
+
+            const formattedTime =
+                paymentDate.toLocaleTimeString(
+                    "en-US",
+                    {
+                        hour: "numeric",
+                        minute: "2-digit"
+                    }
                 );
 
-            } else {
 
-                proofCell.textContent =
-                    "N/A";
-            }
+            row.innerHTML = `
 
+                <td>#${payment.order_ID}</td>
 
-            /* -------------------------------
-               ADD CELLS
-            -------------------------------- */
+                <td>
+                    ${payment.customer_name || "Unknown"}
+                </td>
 
-            row.appendChild(orderCell);
-            row.appendChild(customerCell);
-            row.appendChild(amountCell);
-            row.appendChild(dateCell);
-            row.appendChild(methodCell);
-            row.appendChild(statusCell);
-            row.appendChild(deliveryCell);
-            row.appendChild(proofCell);
+                <td>
+                    ${payment.payment_amount} Ks
+                </td>
 
+                <td>
+                    ${formattedDate}
+                    <br>
+                    ${formattedTime}
+                </td>
 
-            /* -------------------------------
-               STORE PAYMENT ID
-            -------------------------------- */
+                <td>
+                    <i class="fa-solid ${methodIcon}"></i>
+                    ${payment.payment_method}
+                </td>
 
-            row.dataset.paymentId =
-                payment.paymentID;
+                <td>
+
+                    <span
+                        class="status ${statusClass}"
+                        data-payment-id="${payment.paymentID}"
+                    >
+
+                        <i class="fa-solid ${statusIcon}"></i>
+                        ${statusText}
+
+                    </span>
+
+                    <button
+                        class="edit-btn"
+                        data-payment-id="${payment.paymentID}"
+                    >
+
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+
+                    </button>
+
+                </td>
+
+            `;
 
 
             tableBody.appendChild(row);
@@ -270,398 +182,161 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
+        attachEditButtons();
+
         updateSummary(payments);
+
     }
 
 
-    /* =========================================
-       PAYMENT STATUS
-    ========================================== */
+    // =========================================
+    // EDIT PAYMENT STATUS
+    // =========================================
 
-    function createPaymentStatus(payment) {
+    function attachEditButtons() {
 
-        const wrapper =
-            document.createElement("span");
-
-        wrapper.classList.add("status");
+        const editButtons =
+            document.querySelectorAll(".edit-btn");
 
 
-        if (
-            payment.payment_status ===
-            "completed"
-        ) {
+        editButtons.forEach(button => {
 
-            wrapper.classList.add("paid");
+            button.addEventListener("click", function () {
 
-            wrapper.innerHTML = `
-                <i class="fa-solid
-                   fa-circle-check">
-                </i>
-                Paid
-            `;
-
-        } else {
-
-            wrapper.classList.add("pending");
-
-            wrapper.innerHTML = `
-                <i class="fa-solid
-                   fa-clock">
-                </i>
-                Pending
-            `;
-        }
+                const paymentID =
+                    this.dataset.paymentId;
 
 
-        wrapper.style.cursor =
-            "pointer";
+                const newStatus =
+                    prompt(
+                        "Enter payment status:\n\nPaid\nUnpaid\nPending",
+                        "Pending"
+                    );
 
 
-        wrapper.addEventListener(
-            "click",
-            function () {
+                if (!newStatus) {
+                    return;
+                }
 
-                editPaymentStatus(
-                    payment,
-                    wrapper
+
+                const statusInput =
+                    newStatus.toLowerCase().trim();
+
+
+                let databaseStatus;
+
+
+                // Convert display status
+                // into database status
+
+                if (statusInput === "paid") {
+
+                    databaseStatus = "completed";
+
+                } else if (statusInput === "unpaid") {
+
+                    databaseStatus = "unpaid";
+
+                } else if (statusInput === "pending") {
+
+                    databaseStatus = "pending";
+
+                } else {
+
+                    alert(
+                        "Please enter Paid, Unpaid, or Pending."
+                    );
+
+                    return;
+                }
+
+
+                updatePaymentStatus(
+                    paymentID,
+                    databaseStatus
                 );
 
-            }
-        );
+            });
 
+        });
 
-        return wrapper;
     }
 
 
-    /* =========================================
-       EDIT PAYMENT STATUS
-    ========================================== */
+    // =========================================
+    // UPDATE PAYMENT STATUS
+    // =========================================
 
-    async function editPaymentStatus(
-        payment,
-        statusElement
+    function updatePaymentStatus(
+        paymentID,
+        status
     ) {
 
-        const currentStatus =
-            payment.payment_status ===
-            "completed"
-                ? "Paid"
-                : "Pending";
-
-
-        const newStatus =
-            prompt(
-                "Enter payment status:\n\nPaid\nPending",
-                currentStatus
-            );
-
-
-        if (!newStatus) {
-            return;
-        }
-
-
-        const cleanedStatus =
-            newStatus
-                .trim()
-                .toLowerCase();
-
-
-        let databaseStatus;
-
-
-        if (
-            cleanedStatus === "paid" ||
-            cleanedStatus === "completed"
-        ) {
-
-            databaseStatus =
-                "completed";
-
-        } else if (
-            cleanedStatus === "pending"
-        ) {
-
-            databaseStatus =
-                "pending";
-
-        } else {
-
-            alert(
-                "Please enter Paid or Pending."
-            );
-
-            return;
-        }
-
-
-        /* -------------------------------
-           SEND UPDATE TO PHP
-        -------------------------------- */
-
-        const formData =
-            new FormData();
+        const formData = new FormData();
 
         formData.append(
             "paymentID",
-            payment.paymentID
+            paymentID
         );
 
         formData.append(
             "status",
-            databaseStatus
+            status
         );
 
 
-        try {
+        fetch("../php/update_payment_status.php", {
 
-            const response =
-                await fetch(
-                    "php/update_payment_status.php",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
+            method: "POST",
 
+            body: formData
 
-            const result =
-                await response.json();
+        })
 
+        .then(response => response.json())
 
-            if (!result.success) {
+        .then(data => {
+
+            if (data.success) {
 
                 alert(
-                    result.message ||
-                    "Failed to update payment."
+                    "Payment status updated successfully."
                 );
 
-                return;
-            }
-
-
-            /* -------------------------------
-               UPDATE LOCAL DATA
-            -------------------------------- */
-
-            payment.payment_status =
-                databaseStatus;
-
-
-            /* -------------------------------
-               UPDATE DISPLAY
-            -------------------------------- */
-
-            if (
-                databaseStatus ===
-                "completed"
-            ) {
-
-                statusElement.classList.remove(
-                    "pending"
-                );
-
-                statusElement.classList.add(
-                    "paid"
-                );
-
-                statusElement.innerHTML = `
-                    <i class="fa-solid
-                       fa-circle-check">
-                    </i>
-                    Paid
-                `;
+                // Reload records from database
+                loadPayments();
 
             } else {
 
-                statusElement.classList.remove(
-                    "paid"
+                alert(
+                    data.message ||
+                    "Failed to update payment status."
                 );
 
-                statusElement.classList.add(
-                    "pending"
-                );
-
-                statusElement.innerHTML = `
-                    <i class="fa-solid
-                       fa-clock">
-                    </i>
-                    Pending
-                `;
             }
 
+        })
 
-            updateSummary(
-                getCurrentPayments()
-            );
+        .catch(error => {
 
-
-        } catch (error) {
-
-            console.error(
-                "Status update error:",
-                error
-            );
+            console.error("Error:", error);
 
             alert(
-                "Unable to connect to payment server."
+                "Unable to connect to the payment server."
             );
-        }
+
+        });
+
     }
 
 
-    /* =========================================
-       DELIVERY STATUS
-    ========================================== */
+    // =========================================
+    // UPDATE SUMMARY
+    // =========================================
 
-    function createDeliveryStatus(
-        deliveryStatus
-    ) {
+    function updateSummary(payments) {
 
-        const wrapper =
-            document.createElement("span");
-
-        wrapper.classList.add("status");
-
-
-        if (
-            deliveryStatus ===
-            "delivered"
-        ) {
-
-            wrapper.classList.add(
-                "delivered"
-            );
-
-            wrapper.innerHTML = `
-                <i class="fa-solid fa-truck">
-                </i>
-                Delivered
-            `;
-
-        } else if (
-            deliveryStatus ===
-            "shipping"
-        ) {
-
-            wrapper.classList.add(
-                "pending"
-            );
-
-            wrapper.innerHTML = `
-                <i class="fa-solid fa-truck">
-                </i>
-                Shipping
-            `;
-
-        } else {
-
-            wrapper.classList.add(
-                "pending"
-            );
-
-            wrapper.innerHTML = `
-                <i class="fa-solid fa-clock">
-                </i>
-                Pending
-            `;
-        }
-
-
-        return wrapper;
-    }
-
-
-    /* =========================================
-       VIEW PAYMENT PROOF
-    ========================================== */
-
-    function viewPaymentProof(
-        filename
-    ) {
-
-        const imagePath =
-            "images/payment/" +
-            filename;
-
-
-        window.open(
-            imagePath,
-            "_blank"
-        );
-    }
-
-
-    /* =========================================
-       DATE FORMAT
-    ========================================== */
-
-    function formatDate(date) {
-
-        if (
-            Number.isNaN(
-                date.getTime()
-            )
-        ) {
-
-            return "Invalid date";
-        }
-
-
-        const datePart =
-            date.toLocaleDateString(
-                "en-US",
-                {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                }
-            );
-
-
-        const timePart =
-            date.toLocaleTimeString(
-                "en-US",
-                {
-                    hour: "numeric",
-                    minute: "2-digit"
-                }
-            );
-
-
-        return `
-            ${datePart}
-            <br>
-            ${timePart}
-        `;
-    }
-
-
-    /* =========================================
-       SUMMARY
-    ========================================== */
-
-    function updateSummary(
-        payments
-    ) {
-
-        const summaryCards =
-            document.querySelectorAll(
-                ".summary-card h2"
-            );
-
-
-        if (
-            summaryCards.length < 4
-        ) {
-
-            return;
-        }
-
-
-        let totalOrders =
-            payments.length;
+        let totalOrders = payments.length;
 
         let totalSales = 0;
 
@@ -670,129 +345,75 @@ document.addEventListener("DOMContentLoaded", function () {
         let pendingOrders = 0;
 
 
-        payments.forEach(
-            function (payment) {
+        payments.forEach(payment => {
 
-                totalSales +=
-                    Number(
-                        payment.payment_amount
-                    );
+            totalSales +=
+                Number(payment.payment_amount) || 0;
 
 
-                if (
-                    payment.payment_status ===
-                    "completed"
-                ) {
+            if (
+                payment.payment_status === "completed"
+            ) {
 
-                    paidOrders++;
+                paidOrders++;
 
-                } else {
-
-                    pendingOrders++;
-                }
             }
-        );
 
 
-        summaryCards[0].textContent =
-            totalOrders.toLocaleString();
+            if (
+                payment.payment_status === "pending"
+            ) {
+
+                pendingOrders++;
+
+            }
+
+        });
 
 
-        summaryCards[1].textContent =
-            "Ks " +
-            totalSales.toLocaleString();
+        const summaryCards =
+            document.querySelectorAll(
+                ".summary-card h2"
+            );
 
 
-        summaryCards[2].textContent =
-            paidOrders.toLocaleString();
+        if (summaryCards.length >= 4) {
 
+            summaryCards[0].textContent =
+                totalOrders;
 
-        summaryCards[3].textContent =
-            pendingOrders.toLocaleString();
+            summaryCards[1].textContent =
+                "Ks " + totalSales;
+
+            summaryCards[2].textContent =
+                paidOrders;
+
+            summaryCards[3].textContent =
+                pendingOrders;
+
+        }
+
     }
 
 
-    /* =========================================
-       GET CURRENT PAYMENTS FROM TABLE
-    ========================================== */
-
-    function getCurrentPayments() {
-
-        const rows =
-            tableBody.querySelectorAll("tr");
-
-        const payments = [];
-
-
-        rows.forEach(
-            function (row) {
-
-                const status =
-                    row.querySelector(
-                        ".status"
-                    );
-
-
-                if (!status) {
-                    return;
-                }
-
-
-                payments.push({
-
-                    payment_status:
-                        status.classList.contains(
-                            "paid"
-                        )
-                            ? "completed"
-                            : "pending",
-
-                    payment_amount:
-                        row.cells[2]
-                            ? parseInt(
-                                row.cells[2]
-                                    .textContent
-                                    .replace(
-                                        /[^0-9]/g,
-                                        ""
-                                    )
-                              )
-                            : 0
-                });
-            }
-        );
-
-
-        return payments;
-    }
-
-
-    /* =========================================
-       SEARCH
-    ========================================== */
+    // =========================================
+    // SEARCH
+    // =========================================
 
     if (searchBox) {
 
         const searchInput =
             document.createElement("input");
 
-        searchInput.type =
-            "text";
+        searchInput.type = "text";
 
         searchInput.placeholder =
             "Search anything..";
 
-        searchInput.style.border =
-            "none";
-
-        searchInput.style.outline =
-            "none";
-
-        searchInput.style.background =
-            "transparent";
-
-        searchInput.style.width =
-            "150px";
+        searchInput.style.border = "none";
+        searchInput.style.outline = "none";
+        searchInput.style.background = "transparent";
+        searchInput.style.width = "150px";
 
 
         searchBox.innerHTML = "";
@@ -805,17 +426,13 @@ document.addEventListener("DOMContentLoaded", function () {
             "fa-solid fa-magnifying-glass";
 
 
-        searchBox.appendChild(
-            searchIcon
-        );
+        searchBox.appendChild(searchIcon);
 
-        searchBox.appendChild(
-            searchInput
-        );
+        searchBox.appendChild(searchInput);
 
 
         searchInput.addEventListener(
-            "input",
+            "keyup",
             function () {
 
                 const searchValue =
@@ -825,67 +442,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const rows =
-                    tableBody.querySelectorAll(
-                        "tr"
-                    );
+                    tableBody.querySelectorAll("tr");
 
 
-                rows.forEach(
-                    function (row) {
+                rows.forEach(row => {
 
-                        const rowText =
-                            row.textContent
-                                .toLowerCase();
+                    const rowText =
+                        row.textContent.toLowerCase();
 
 
-                        row.style.display =
-                            rowText.includes(
-                                searchValue
-                            )
-                                ? ""
-                                : "none";
+                    if (
+                        rowText.includes(searchValue)
+                    ) {
+
+                        row.style.display = "";
+
+                    } else {
+
+                        row.style.display = "none";
+
                     }
-                );
+
+                });
+
             }
         );
+
     }
-
-
-    /* =========================================
-       PAGINATION
-    ========================================== */
-
-    paginationButtons.forEach(
-        function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    paginationButtons.forEach(
-                        function (btn) {
-
-                            btn.classList.remove(
-                                "active"
-                            );
-                        }
-                    );
-
-
-                    button.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-        }
-    );
-
-
-    /* =========================================
-       START
-    ========================================== */
-
-    loadPayments();
 
 });

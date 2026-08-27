@@ -2,7 +2,7 @@
 
 header("Content-Type: application/json");
 
-require_once "db.php";
+require_once "db_connect.php";
 
 
 /* =========================================
@@ -54,7 +54,8 @@ if ($paymentID <= 0) {
 
 $allowedStatuses = [
     "pending",
-    "completed"
+    "completed",
+    "unpaid"
 ];
 
 if (!in_array($status, $allowedStatuses)) {

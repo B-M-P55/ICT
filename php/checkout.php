@@ -1,5 +1,5 @@
 <?php
-include 'db.php'; 
+include 'db_connect.php'; 
 
 $successMessage = "";
 $errorMessage = "";
@@ -97,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link rel="stylesheet" href="../css/order.css">
   <link rel="stylesheet" href="../css/nav&footer.css">
 </head>
+
 <body>
 
   <!-- NAVBAR -->

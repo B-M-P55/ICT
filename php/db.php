@@ -10,7 +10,11 @@ function database(): PDO
     }
 
     $host = getenv('H2O2U_DB_HOST') ?: '127.0.0.1';
+
     $name = getenv('H2O2U_DB_NAME') ?: 'h2';
+
+    $name = getenv('H2O2U_DB_NAME') ?: 'h2_db';
+
     $user = getenv('H2O2U_DB_USER') ?: 'root';
     $password = getenv('H2O2U_DB_PASSWORD') ?: '';
 
