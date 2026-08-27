@@ -256,5 +256,6 @@ $orderResult = $orderQuery->get_result();
             }
         });
     </script>
+    
 </body>
 </html>
