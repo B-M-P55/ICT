@@ -11,9 +11,6 @@
         <a class="side-link" href="admin_order.html"><i class="fa-solid fa-clipboard-list"></i>Orders</a>
         <a class="side-link <?= $activePage === 'payments' ? 'active' : '' ?>" href="admin_payments.php"><i class="fa-solid fa-wallet"></i>Payments</a>
         <a class="side-link" href="admin_delivery.html"><i class="fa-solid fa-truck-fast"></i>Deliveries</a>
-
-        <a class="side-link" href="admin_delivery.html"><i class="fa-solid fa-user-group"></i>Delivery staff</a>
-
     </nav>
     <div class="side-bottom"><a class="side-link" href="admin_logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log out</a></div>
 </aside>
