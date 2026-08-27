@@ -69,6 +69,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       VALUES ('$orderDate', $quantity, $totalAmount, 'Pending', $userID, $locationID)");
         $orderID = $conn->insert_id;
 
+        // Insert payment record
+$paymentStatus = 'pending';
+
+$conn->query("INSERT INTO tbl_payment 
+    (payment_amount, payment_date, payment_method, payment_status, payment_photo, order_ID)
+    VALUES 
+    ($totalAmount, '$orderDate', '$paymentMethod', '$paymentStatus', '$paymentProofPath', $orderID)");
+
         // Insert into tbl_order_details 
         $conn->query("INSERT INTO tbl_order_details (quantity, price, productID, orderID) 
                       VALUES ($quantity, $productUnitPrice, 1, $orderID)");
