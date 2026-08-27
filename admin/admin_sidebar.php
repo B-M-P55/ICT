@@ -8,9 +8,11 @@
         <a class="side-link <?= $activePage === 'products' ? 'active' : '' ?>" href="admin_products.php"><i class="fa-solid fa-bottle-water"></i>Products</a>
         <a class="side-link <?= $activePage === 'stock' ? 'active' : '' ?>" href="admin_stock.php"><i class="fa-solid fa-boxes-stacked"></i>Stock management</a>
         <p class="side-label">Operations</p>
+
         <a class="side-link" href="admin_order.html"><i class="fa-solid fa-clipboard-list"></i>Orders</a>
+        
         <a class="side-link <?= $activePage === 'payments' ? 'active' : '' ?>" href="admin_payments.php"><i class="fa-solid fa-wallet"></i>Payments</a>
-        <a class="side-link" href="admin_delivery.html"><i class="fa-solid fa-truck-fast"></i>Deliveries</a>
+        <a class="side-link" href="admin_delivery.php"><i class="fa-solid fa-truck-fast"></i>Deliveries</a>
 
         <a class="side-link" href="admin_delivery.html"><i class="fa-solid fa-user-group"></i>Delivery staff</a>
 
