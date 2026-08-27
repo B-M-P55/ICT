@@ -104,12 +104,12 @@ $orderResult = $orderQuery->get_result();
         <div class="menu-section">
             <div class="menu-title">Vouchers</div>
             <a href="admin_order_history.php" class="menu-item active">• Order History</a>
-            <a href="admin_payment.html" class="menu-item">• Payment Transactions</a>
+            <a href="admin_payment.php" class="menu-item">• Payment Transactions</a>
         </div>
         <div class="menu-section">
             <div class="menu-title">Deliveries</div>
-            <a href="admin_delivery.html" class="menu-item">• Delivery History</a>
-            <a href="#" class="menu-item">• Delivery Staff</a>
+            <a href="admin_delivery.php" class="menu-item">• Delivery History</a>
+            
         </div>
         <a href="logout.php" class="logout">Log Out</a>
     </aside>

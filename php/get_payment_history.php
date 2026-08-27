@@ -2,7 +2,7 @@
 
 header("Content-Type: application/json");
 
-require_once "db.php";
+require_once "db_connect.php";
 
 
 /* =========================================
@@ -21,76 +21,48 @@ if ($_SERVER["REQUEST_METHOD"] !== "GET") {
 
 
 /* =========================================
-   OPTIONAL USER ID
+   GET PAYMENT RECORDS
 ========================================= */
 
-$userID = isset($_GET["userID"])
-    ? (int) $_GET["userID"]
-    : 0;
+$sql = "
+    SELECT
+        p.paymentID,
+        p.payment_amount,
+        p.payment_date,
+        p.payment_method,
+        p.payment_status,
+        p.payment_photo,
+        p.order_ID,
+        o.userID,
+        CONCAT(u.first_name, ' ', u.last_name) AS customer_name
+
+    FROM tbl_payment p
+
+    INNER JOIN tbl_order o
+        ON p.order_ID = o.order_ID
+
+    INNER JOIN tbl_user u
+        ON o.userID = u.userID
+
+    ORDER BY p.payment_date DESC
+";
+
+
+$stmt = $conn->prepare($sql);
 
 
 /* =========================================
-   GET PAYMENT HISTORY
+   CHECK QUERY
 ========================================= */
 
-if ($userID > 0) {
+if (!$stmt) {
 
-    $stmt = $conn->prepare(
-        "SELECT
-            p.paymentID,
-            p.payment_amount,
-            p.payment_date,
-            p.payment_method,
-            p.payment_status,
-            p.payment_photo,
-            p.order_ID,
-            o.userID,
-            CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
-            d.status AS delivery_status
-         FROM tbl_payment p
-         INNER JOIN tbl_order o
-            ON p.order_ID = o.order_ID
-         INNER JOIN tbl_user u
-            ON o.userID = u.userID
-         LEFT JOIN tbl_delivery d
-            ON p.order_ID = d.orderID
-         WHERE o.userID = ?
-         ORDER BY p.payment_date DESC"
-    );
+    echo json_encode([
+        "success" => false,
+        "message" => "Failed to prepare payment query."
+    ]);
 
-    $stmt->bind_param(
-        "i",
-        $userID
-    );
-
-} else {
-
-    /*
-       Admin view:
-       Get payments from all customers.
-    */
-
-    $stmt = $conn->prepare(
-        "SELECT
-            p.paymentID,
-            p.payment_amount,
-            p.payment_date,
-            p.payment_method,
-            p.payment_status,
-            p.payment_photo,
-            p.order_ID,
-            o.userID,
-            CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
-            d.status AS delivery_status
-         FROM tbl_payment p
-         INNER JOIN tbl_order o
-            ON p.order_ID = o.order_ID
-         INNER JOIN tbl_user u
-            ON o.userID = u.userID
-         LEFT JOIN tbl_delivery d
-            ON p.order_ID = d.orderID
-         ORDER BY p.payment_date DESC"
-    );
+    exit;
 }
 
 
@@ -98,25 +70,38 @@ if ($userID > 0) {
    EXECUTE
 ========================================= */
 
-$stmt->execute();
+if (!$stmt->execute()) {
 
-$result = $stmt->get_result();
+    echo json_encode([
+        "success" => false,
+        "message" => "Failed to retrieve payment records."
+    ]);
 
+    $stmt->close();
+    $conn->close();
 
-/* =========================================
-   STORE PAYMENTS
-========================================= */
-
-$payments = [];
-
-while ($row = $result->fetch_assoc()) {
-
-    $payments[] = $row;
+    exit;
 }
 
 
 /* =========================================
-   RETURN RESPONSE
+   GET RESULTS
+========================================= */
+
+$result = $stmt->get_result();
+
+$payments = [];
+
+
+while ($row = $result->fetch_assoc()) {
+
+    $payments[] = $row;
+
+}
+
+
+/* =========================================
+   RETURN JSON
 ========================================= */
 
 echo json_encode([
@@ -126,5 +111,6 @@ echo json_encode([
 
 
 $stmt->close();
-
 $conn->close();
+
+?>

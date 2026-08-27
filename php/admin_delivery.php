@@ -84,15 +84,15 @@ $total_delivered = $row_delivered['count'];
 
     <div class="menu-section">
         <div class="menu-title">Vouchers</div>
-        <a href="order-history.html" class="menu-item">• Order History</a>
-        <a href="payment-transactions.html" class="menu-item">• Payment Transactions</a>
+        <a href="admin_order_history.php" class="menu-item">• Order History</a>
+        <a href="admin_payment.php" class="menu-item">• Payment Transactions</a>
     </div>
 
     <div class="menu-section">
         <div class="menu-title">
             <h5>Deliveries</h5>
         </div>
-        <a href="delivery-history.html" class="menu-item active">• Delivery History</a>
+        <a href="admin_delivery.php" class="menu-item active">• Delivery History</a>
     </div>
 
     <a href="#" class="logout">Log Out</a>
