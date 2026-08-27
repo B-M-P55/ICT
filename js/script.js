@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
+    var productRow = document.getElementById("productRow");
+
+
+    var productRow = document.getElementById("productRow");
+
+
+    var productRow = document.getElementById("productRow");
+
     /* =========================================
        PRODUCT DATA
     ========================================== */
@@ -10,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             name: "Bottled Water",
             price: "1000 Ks.",
-            img: "images/two-btl.jpg"
+            img: "img/bottle.jpg"
         },
 
         {
@@ -48,172 +56,68 @@ document.addEventListener("DOMContentLoaded", function () {
        CREATE PRODUCTS
     ========================================== */
 
+
+
+
     if (productRow) {
 
-        productRow.innerHTML = products.map(function (prod) {
+        fetch("php/get_products.php")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (products) {
 
-            return `
+                productRow.innerHTML = products.map(function (prod) {
 
-                <div class="col-12 col-md-6">
+                    return '' +
+                        '<div class="col-12 col-md-6">' +
+                            '<div class="product-card">' +
+                                '<div class="product-top-banner"></div>' +
+                                '<div class="product-img-wrapper">' +
+                                    '<img src="' + prod.image_path + '" alt="' + prod.product_name + '">' +
+                                '</div>' +
+                                '<div class="product-body">' +
+                                    '<h4>' + prod.product_name + ' (' + prod.size + ')</h4>' +
+                                    '<p>Fresh and clean drinking water delivered directly to your door.</p>' +
+                                    '<div class="product-footer">' +
+                                        '<span class="product-price">' +
+                                            '<span class="arrow-icon">▶</span> ' +
+                                            prod.price + ' Ks.' +
+                                        '</span>' +
+                                        '<button type="button" class="btn-buy" data-id="' + prod.productID + '">Order now</button>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
 
-                    <div class="product-card">
+                }).join("");
 
+                var productButtons = document.querySelectorAll(".btn-buy");
+                productButtons.forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        window.location.href = "user_orders.html";
+                    });
+                });
 
-                        <!-- NAVY TOP -->
-
-                        <div class="product-top-banner">
-
-                        </div>
-
-
-
-                        <!-- PRODUCT IMAGE -->
-
-                        <div class="product-img-wrapper">
-
-                            <img
-                                src="${prod.img}"
-                                alt="${prod.name}"
-                            >
-
-                        </div>
-
-
-
-                        <!-- PRODUCT BODY -->
-
-                        <div class="product-body">
-
-
-                            <h4>
-                                ${prod.name}
-                            </h4>
-
-
-                            <p>
-
-                                dui, vehicula, elit tincidunt ipsum
-                                eget in sit id id non tempor tincidunt
-                                sit sed diam tortor. faucibus Nam
-                                ipsum urna Ut
-
-                            </p>
-
-
-
-                            <!-- PRODUCT FOOTER -->
-
-                            <div class="product-footer">
-
-
-                                <span class="product-price">
-
-                                    <span class="arrow-icon">
-                                        ▶
-                                    </span>
-
-                                    ${prod.price}
-
-                                </span>
-
-
-
-                                <button
-                                    type="button"
-                                    class="btn-buy"
-                                >
-
-                                    Order now
-
-                                </button>
-
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-
-
-        /* =========================================
-           PRODUCT ORDER BUTTONS
-        ========================================== */
-
-        const productButtons =
-            document.querySelectorAll(".btn-buy");
-
-
-        productButtons.forEach(function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    window.location.href =
-                        "user_orders.html";
-
-                }
-            );
-
-        });
+            })
+            .catch(function (error) {
+                console.error("Failed to load products:", error);
+            });
 
     }
 
-
-
-    /* =========================================
-       NAVBAR ORDER BUTTON
-    ========================================== */
-
-    const navOrderButton =
-        document.getElementById("navOrderButton");
-
-
+    var navOrderButton = document.getElementById("navOrderButton");
     if (navOrderButton) {
-
-        navOrderButton.addEventListener(
-            "click",
-            function () {
-
-                window.location.href =
-                    "user_orders.html";
-
-            }
-        );
-
+        navOrderButton.addEventListener("click", function () {
+            window.location.href = "user_orders.html";
+        });
     }
 
-
-
-    /* =========================================
-       HERO ORDER BUTTON
-    ========================================== */
-
-    const heroOrderButton =
-        document.getElementById(
-            "heroOrderButton"
-        );
-
-
+    var heroOrderButton = document.getElementById("heroOrderButton");
     if (heroOrderButton) {
-
-        heroOrderButton.addEventListener(
-            "click",
-            function () {
-
-                window.location.href =
-                    "user_orders.html";
-
-            }
-        );
-
+        heroOrderButton.addEventListener("click", function () {
+            window.location.href = "user_orders.html";
+        });
     }
 
 });

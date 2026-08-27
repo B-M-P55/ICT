@@ -39,7 +39,7 @@ session_start();
             Vouchers
         </div>
 
-        <a href="../order-history.html" class="menu-item">
+        <a href="admin_order_history.php" class="menu-item">
             • Order History
         </a>
 

@@ -1,65 +1,60 @@
 <?php
+session_start();
 include 'db_connect.php';
 
-// 1. Get Search Input
+// 1. Get Search Input & Pagination
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$resultsPerPage = 5;
+$offset = ($page - 1) * $resultsPerPage;
 
-// 2. Dynamic Query (Handles both Search and Normal View)
+// 2. Count Total Records (For Pagination & Display)
 if (!empty($search)) {
-    // Search View
-    $sql = "SELECT 
-                d.deliveryID,
-                d.orderID,
-                CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
-                u.address,
-                drv.name AS driver_name,
-                drv.phone_number AS driver_phone,
-                DATE_FORMAT(d.date, '%M %e, %Y') AS delivery_date,
-                DATE_FORMAT(d.date, '%h:%i %p') AS delivery_time,
-                d.status
-            FROM tbl_delivery d
-            JOIN tbl_order o ON d.orderID = o.order_ID
-            JOIN tbl_user u ON o.userID = u.userID
-            JOIN tbl_driver drv ON d.driverID = drv.driverID
-            WHERE CONCAT_WS(' ', u.first_name, u.last_name) LIKE ?
-            ORDER BY d.deliveryID ASC";
-
-    $stmt = $conn->prepare($sql);
+    $countSql = "SELECT COUNT(*) AS total FROM tbl_delivery d 
+                 JOIN tbl_order o ON d.orderID = o.order_ID 
+                 JOIN tbl_user u ON o.userID = u.userID 
+                 WHERE CONCAT_WS(' ', u.first_name, u.last_name) LIKE ?";
+    $stmt = $conn->prepare($countSql);
     $searchTerm = "%" . $search . "%";
     $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $total_deliveries = $stmt->get_result()->fetch_assoc()['total'];
 } else {
-    // Normal View (Fetch All)
-    $sql = "SELECT 
-                d.deliveryID,
-                d.orderID,
+    $countSql = "SELECT COUNT(*) AS total FROM tbl_delivery";
+    $total_deliveries = $conn->query($countSql)->fetch_assoc()['total'];
+}
+
+$totalPages = max(1, ceil($total_deliveries / $resultsPerPage));
+
+// 3. Main Query with LIMIT & OFFSET
+$baseSelect = "SELECT 
+                d.deliveryID, d.orderID, u.address, d.status,
                 CONCAT(u.first_name, ' ', u.last_name) AS customer_name,
-                u.address,
-                drv.name AS driver_name,
-                drv.phone_number AS driver_phone,
+                drv.name AS driver_name, drv.phone_number AS driver_phone,
                 DATE_FORMAT(d.date, '%M %e, %Y') AS delivery_date,
-                DATE_FORMAT(d.date, '%h:%i %p') AS delivery_time,
-                d.status
+                DATE_FORMAT(d.date, '%h:%i %p') AS delivery_time
             FROM tbl_delivery d
             JOIN tbl_order o ON d.orderID = o.order_ID
             JOIN tbl_user u ON o.userID = u.userID
-            JOIN tbl_driver drv ON d.driverID = drv.driverID
-            ORDER BY d.deliveryID ASC";
+            JOIN tbl_driver drv ON d.driverID = drv.driverID";
 
-    $result = mysqli_query($conn, $sql);
+if (!empty($search)) {
+    $sql = $baseSelect . " WHERE CONCAT_WS(' ', u.first_name, u.last_name) LIKE ? ORDER BY d.deliveryID ASC LIMIT ? OFFSET ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sii", $searchTerm, $resultsPerPage, $offset);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $sql = $baseSelect . " ORDER BY d.deliveryID DESC LIMIT ? OFFSET ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $resultsPerPage, $offset);
+    $stmt->execute();
+    $result = $stmt->get_result();
 }
 
-// 3. Get Summary Counters
-$query_total = "SELECT COUNT(*) AS total_count FROM tbl_delivery";
-$result_total = mysqli_query($conn, $query_total);
-$row_total = mysqli_fetch_assoc($result_total);
-$total_deliveries = $row_total['total_count'];
-
-$query_delivered = "SELECT COUNT(*) AS delivered_count FROM tbl_delivery WHERE status = 'Delivered'";
-$result_delivered = mysqli_query($conn, $query_delivered);
-$row_delivered = mysqli_fetch_assoc($result_delivered);
-$total_delivered = $row_delivered['delivered_count'];
+// 4. Summary Counter (Delivered status)
+$row_delivered = $conn->query("SELECT COUNT(*) AS count FROM tbl_delivery WHERE status = 'Delivered'")->fetch_assoc();
+$total_delivered = $row_delivered['count'];
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +84,8 @@ $total_delivered = $row_delivered['delivered_count'];
 
     <div class="menu-section">
         <div class="menu-title">Vouchers</div>
-        <a href="order-history.html" class="menu-item">• Order History</a>
+        
+        <a href="admin_order_history.php" class="menu-item">• Order History</a>
         <a href="admin_payment.php" class="menu-item">• Payment Transactions</a>
     </div>
 
@@ -97,7 +93,7 @@ $total_delivered = $row_delivered['delivered_count'];
         <div class="menu-title">
             <h5>Deliveries</h5>
         </div>
-        <a href="delivery-history.html" class="menu-item active">• Delivery History</a>
+        <a href="admin_delivery.php" class="menu-item active">• Delivery History</a>
     </div>
 
     <a href="#" class="logout">Log Out</a>
@@ -209,14 +205,22 @@ $total_delivered = $row_delivered['delivered_count'];
         </table>
 
         <div class="table-footer">
-            <span>Showing entries</span>
+            <span>
+                Showing <?php echo $result ? $result->num_rows : 0; ?> of <?php echo $total_deliveries; ?> entries
+                </span>
 
-            <div class="pagination">
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
+                <!-- PAGINATION CONTROLS -->
+                <div class="pagination">
+                    <?php if ($totalPages > 1): ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <a href="admin_delivery.php?page=<?php echo $i; ?>" class="btn btn-sm <?php echo ($page == $i) ? 'btn-primary active' : 'btn-outline-secondary'; ?> mx-1">
+                                <?php echo $i; ?>
+                            </a>
+                        <?php endfor; ?>
+                    <?php else: ?>
+                        <button class="active">1</button>
+                    <?php endif; ?>
+                </div>
         </div>
 
     </section>
