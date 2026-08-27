@@ -1,0 +1,1480 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+:root {
+
+    --primary-navy: #15177d;
+
+    --dark-navy: #0f125f;
+
+    --accent-blue: #179ed5;
+
+    --light-blue: #8db6e8;
+
+    --text-dark: #222222;
+
+    --white: #ffffff;
+
+}
+
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    color: var(--text-dark);
+
+    background-color: white;
+
+}
+
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+    width: 100%;
+
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 45px;
+
+    background-color: white;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.1);
+
+    position: relative;
+
+    z-index: 100;
+
+}
+
+
+/* LOGO */
+
+.logo-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.logo-section img {
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: contain;
+
+}
+
+
+.logo-section h2 {
+
+    margin: 0;
+
+    color: #111;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+}
+
+
+
+/* NAV LINKS */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    list-style: none;
+
+    gap: 40px;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: #111;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+
+}
+
+
+.nav-links a:hover {
+
+    color: var(--accent-blue);
+
+}
+
+
+
+/* NAV RIGHT */
+
+.nav-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.order-btn {
+
+    background-color: var(--primary-navy);
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 25px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.order-btn:hover {
+
+    background-color: #0b0d5e;
+
+}
+
+
+
+/* PROFILE */
+
+.profile {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid #222;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: black;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+}
+
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+
+    position: relative;
+
+    min-height: 470px;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(
+            rgba(20, 100, 150, 0.08),
+            rgba(20, 100, 150, 0.08)
+        ),
+
+        url("../images/water_splash.jpg")
+
+        center center /
+
+        cover
+
+        no-repeat;
+
+}
+
+
+.hero-overlay {
+
+    width: 100%;
+
+}
+
+
+.hero-content {
+
+    color: white;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3);
+
+}
+
+
+.hero-content h1 {
+
+    font-size: 3rem;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero-content p {
+
+    font-size: 1.1rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+}
+
+
+.hero-button {
+
+    background-color: var(--primary-navy);
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 28px;
+
+    border-radius: 20px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.hero-button:hover {
+
+    background-color: #0c0e60;
+
+}
+
+
+
+/* =========================================
+   OFFER CIRCLE
+========================================= */
+
+.offer-circle {
+
+    width: 220px;
+
+    height: 220px;
+
+    border-radius: 50%;
+
+    background-color: var(--primary-navy);
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.offer-circle span {
+
+    font-size: 14px;
+
+}
+
+
+.offer-circle strong {
+
+    font-size: 27px;
+
+}
+
+
+.offer-circle .offer-bottle {
+
+    position: absolute;
+
+    width: 135px;
+
+    right: -35px;
+
+    bottom: -30px;
+
+    filter:
+        drop-shadow(
+            0 5px 5px rgba(0, 0, 0, 0.3)
+        );
+
+}
+
+
+
+/* =========================================
+   SERVICE
+========================================= */
+
+.service-section {
+
+    background-color: var(--primary-navy);
+
+    padding: 25px 0;
+
+}
+
+
+.service-item {
+
+    color: white;
+
+}
+
+
+.service-icon {
+
+    margin-bottom: 7px;
+
+    font-size: 22px;
+
+}
+
+
+.service-item span {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================
+   PRODUCTS SECTION
+========================================= */
+
+.products-section {
+
+    padding:
+
+        65px
+
+        0
+
+        100px;
+
+    background-color: white;
+
+
+    /* Dotted background */
+
+    background-image:
+
+        radial-gradient(
+            #cfcfcf 1px,
+            transparent 1px
+        );
+
+    background-size: 22px 22px;
+
+}
+
+
+
+/* HEADING */
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+
+}
+
+
+.section-heading span {
+
+    color: var(--primary-navy);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.section-heading h2 {
+
+    margin-top: 12px;
+
+    color: #333;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+}
+
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.product-card {
+
+    width: 100%;
+
+    max-width: 390px;
+
+    min-height: 520px;
+
+    margin: 0 auto;
+
+    background-color: white;
+
+    border-radius: 2px;
+
+    overflow: visible;
+
+    position: relative;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.product-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15);
+
+}
+
+
+
+/* =========================================
+   NAVY TOP PRODUCT AREA
+========================================= */
+
+.product-top-banner {
+
+    width: 100%;
+
+    height: 185px;
+
+    background-color: var(--primary-navy);
+
+    position: relative;
+
+    clip-path:
+
+        polygon(
+            0 0,
+            100% 0,
+            100% 72%,
+            85% 82%,
+            70% 90%,
+            50% 100%,
+            30% 90%,
+            15% 82%,
+            0 72%
+        );
+
+}
+
+
+
+/* =========================================
+   CIRCULAR PRODUCT IMAGE
+========================================= */
+
+.product-img-wrapper {
+
+    width: 185px;
+
+    height: 185px;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    position: absolute;
+
+    top: 95px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+
+    padding: 7px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12);
+
+}
+
+
+.product-img-wrapper img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+}
+
+
+
+/* =========================================
+   PRODUCT BODY
+========================================= */
+
+.product-body {
+
+    min-height: 335px;
+
+    padding:
+
+        105px
+
+        30px
+
+        20px;
+
+    background-color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.product-body h4 {
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #111;
+
+    font-weight: 500;
+
+    margin-bottom: 18px;
+
+}
+
+
+.product-body p {
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+    color: #222;
+
+    margin-bottom: auto;
+
+}
+
+
+
+/* =========================================
+   PRODUCT FOOTER
+========================================= */
+
+.product-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #eeeeee;
+
+}
+
+
+.product-price {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #222;
+
+    font-size: 11px;
+
+}
+
+
+.arrow-icon {
+
+    font-size: 8px;
+
+    color: black;
+
+}
+
+
+
+/* =========================================
+   ORDER BUTTON
+========================================= */
+
+.btn-buy {
+
+    border: none;
+
+    background-color: var(--primary-navy);
+
+    color: white;
+
+    border-radius: 4px;
+
+    padding:
+
+        7px
+
+        20px;
+
+    font-size: 9px;
+
+    cursor: pointer;
+
+    transition:
+
+        background-color 0.2s ease,
+
+        transform 0.2s ease;
+
+}
+
+
+.btn-buy:hover {
+
+    background-color: #0b0d5e;
+
+    transform: translateY(-1px);
+
+}
+
+
+
+/* =========================================
+   DELIVERY BANNER
+========================================= */
+
+.delivery-banner {
+
+    min-height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            rgba(80, 140, 220, 0.35),
+            rgba(80, 140, 220, 0.35)
+        ),
+
+        url("../images/bottle banner.jpg")
+
+        center center /
+
+        cover
+
+        no-repeat;
+
+}
+
+
+.delivery-content h2 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin: 0;
+
+}
+
+
+.delivery-content p {
+
+    font-size: 18px;
+
+    margin: 5px 0 0;
+
+}
+
+
+
+/* =========================================
+   REVIEWS
+========================================= */
+
+.reviews-section {
+
+    padding:
+
+        70px
+
+        0;
+
+    background:
+
+        linear-gradient(
+            rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0.45)
+        ),
+
+        url("../images/splash.jpg")
+
+        center center /
+
+        cover
+
+        no-repeat;
+
+}
+
+
+.review-card {
+
+    height: 100%;
+
+    padding: 22px;
+
+    background-color: var(--light-blue);
+
+    border: 2px solid white;
+
+    border-radius: 7px;
+
+    color: white;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.review-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+}
+
+
+.review-user {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.user-circle {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background-color: #d4dce8;
+
+    margin-right: 10px;
+
+}
+
+
+.stars {
+
+    color: #ffc107;
+
+    letter-spacing: 2px;
+
+}
+
+
+.review-card p {
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin: 0;
+
+}
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    background-color: #171878;
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns:
+
+        1.3fr
+
+        1fr
+
+        1fr
+
+        1fr
+
+        1fr;
+
+    gap: 30px;
+
+    padding:
+
+        40px
+
+        55px
+
+        20px;
+
+}
+
+
+.footer-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.footer-logo img {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+}
+
+
+.footer-logo h2 {
+
+    font-size: 21px;
+
+    margin: 0;
+
+}
+
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.footer-column h3 {
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.footer-column a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+}
+
+
+.footer-column a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+.copyright {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    margin-top: 15px;
+
+}
+
+
+
+/* =========================================
+   LARGE DESKTOP
+   1280 × 720
+========================================= */
+
+@media (min-width: 1200px) {
+
+    .navbar {
+
+        padding-left: 55px;
+
+        padding-right: 55px;
+
+    }
+
+
+    .hero-section {
+
+        min-height: 500px;
+
+    }
+
+
+    .products-section {
+
+        padding-top: 70px;
+
+        padding-bottom: 110px;
+
+    }
+
+
+    .product-card {
+
+        max-width: 390px;
+
+    }
+
+}
+
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    .navbar {
+
+        padding:
+
+            10px
+
+            25px;
+
+    }
+
+
+    .nav-links {
+
+        gap: 18px;
+
+    }
+
+
+    .nav-links a {
+
+        font-size: 12px;
+
+    }
+
+
+    .hero-section {
+
+        padding: 70px 0;
+
+        text-align: center;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 2.4rem;
+
+    }
+
+
+    .offer-circle {
+
+        width: 190px;
+
+        height: 190px;
+
+    }
+
+
+    .product-card {
+
+        max-width: 380px;
+
+    }
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .navbar {
+
+        flex-wrap: wrap;
+
+        padding: 10px 15px;
+
+    }
+
+
+    .logo-section {
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .logo-section img {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .logo-section h2 {
+
+        font-size: 17px;
+
+    }
+
+
+    .nav-links {
+
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        margin-top: 10px;
+
+    }
+
+
+    .nav-links a {
+
+        font-size: 11px;
+
+    }
+
+
+    .nav-buttons {
+
+        gap: 10px;
+
+    }
+
+
+    .order-btn {
+
+        padding:
+
+            8px
+
+            15px;
+
+        font-size: 10px;
+
+    }
+
+
+    .profile {
+
+        width: 35px;
+
+        height: 35px;
+
+        font-size: 15px;
+
+    }
+
+
+    .hero-section {
+
+        min-height: 650px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .hero-content p {
+
+        font-size: 14px;
+
+    }
+
+
+    .offer-circle {
+
+        width: 170px;
+
+        height: 170px;
+
+    }
+
+
+    .offer-circle strong {
+
+        font-size: 22px;
+
+    }
+
+
+    .offer-circle .offer-bottle {
+
+        width: 105px;
+
+        right: -25px;
+
+        bottom: -20px;
+
+    }
+
+
+    .products-section {
+
+        padding:
+
+            50px
+
+            15px
+
+            80px;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 17px;
+
+    }
+
+
+    .product-card {
+
+        max-width: 360px;
+
+        min-height: 500px;
+
+    }
+
+
+    .product-top-banner {
+
+        height: 170px;
+
+    }
+
+
+    .product-img-wrapper {
+
+        width: 160px;
+
+        height: 160px;
+
+        top: 90px;
+
+    }
+
+
+    .product-body {
+
+        padding-top: 95px;
+
+    }
+
+
+    .delivery-banner {
+
+        min-height: 180px;
+
+    }
+
+
+    .delivery-content h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .footer {
+
+        grid-template-columns:
+
+            1fr
+
+            1fr;
+
+        padding:
+
+            35px
+
+            25px
+
+            20px;
+
+    }
+
+
+    .footer-logo {
+
+        grid-column: 1 / -1;
+
+    }
+
+}
+
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .nav-links {
+
+        gap: 10px;
+
+    }
+
+
+    .nav-links a {
+
+        font-size: 9px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 1.7rem;
+
+    }
+
+
+    .product-card {
+
+        max-width: 320px;
+
+    }
+
+
+    .product-img-wrapper {
+
+        width: 145px;
+
+        height: 145px;
+
+    }
+
+
+    .product-body {
+
+        padding-left: 22px;
+
+        padding-right: 22px;
+
+    }
+
+
+    .footer {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .footer-logo {
+
+        grid-column: auto;
+
+    }
+
+}

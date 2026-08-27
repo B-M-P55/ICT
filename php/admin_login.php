@@ -29,8 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $insertStmt->bind_param("sssss", $firstName, $lastName, $email, $password, $phone);
 
             if ($insertStmt->execute()) {
+
                 header("Location: ../homepage.html");
                 exit();
+
+                $signupSuccess = "Account created successfully! You can now log in.";
+               // header("Location: ../homepage.html");
+                //exit();
+
+
             } else {
                 $signupError = "Failed to create account. Please try again.";
             }

@@ -151,7 +151,11 @@ $activePage = 'products';
                         <div class="catalogue-title"><div><h3><?= htmlspecialchars($product['product_name']) ?></h3><p><?= htmlspecialchars($product['size']) ?></p></div><span class="stock-count <?= (int)$product['stock'] <= 10 ? 'low' : '' ?>"><?= (int)$product['stock'] ?> in stock</span></div>
                         <div class="catalogue-price"><?= number_format((float)$product['price'], 2) ?> <small>Ks</small></div>
                         <div class="catalogue-actions">
+
                             <button type="button" class="btn btn-outline-primary btn-sm" onclick="var el=document.getElementById('edit<?= (int)$product['productID'] ?>');el.style.display=el.style.display==='none'?'block':'none';"><i class="fa-solid fa-pen"></i> Edit</button>
+
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#edit<?= (int)$product['productID'] ?>"><i class="fa-solid fa-pen"></i> Edit</button>
+
                             <?php if ($product['is_active']): ?>
                                 <form method="post"><input type="hidden" name="token" value="<?= product_token() ?>"><input type="hidden" name="action" value="deactivate"><input type="hidden" name="product_id" value="<?= (int)$product['productID'] ?>"><button class="btn btn-light btn-sm text-danger" onclick="return confirm('Hide this product from customers?')"><i class="fa-solid fa-eye-slash"></i> Hide</button></form>
                             <?php else: ?>
@@ -159,7 +163,11 @@ $activePage = 'products';
                             <?php endif; ?>
                         </div>
                     </div>
+
                     <div id="edit<?= (int)$product['productID'] ?>" style="display:none; padding:15px; border-top:1px solid #e5edf3; background:#f9fbfd;">
+
+                    <div class="collapse product-edit" id="edit<?= (int)$product['productID'] ?>">
+
                         <form method="post" enctype="multipart/form-data" class="edit-grid">
                             <input type="hidden" name="token" value="<?= product_token() ?>"><input type="hidden" name="action" value="update"><input type="hidden" name="product_id" value="<?= (int)$product['productID'] ?>"><input type="hidden" name="stock" value="<?= (int)$product['stock'] ?>">
                             <label><span>Name</span><input class="form-control" name="product_name" value="<?= htmlspecialchars($product['product_name']) ?>" required></label>

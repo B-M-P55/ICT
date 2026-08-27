@@ -449,7 +449,8 @@ textarea.order-input {
   font-size: 11px;
 }
 
-.footer-column a:hover {
+.footer-column
+a:hover {
   text-decoration: underline;
 }
 
