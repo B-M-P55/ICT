@@ -1,4 +1,4 @@
-?php $activePage = $activePage ?? ''; ?>
+<?php $activePage = $activePage ?? ''; ?>
 <aside class="admin-side">
     <a class="brand" href="admin_dashboard.php"><img src="../img/logo.png" alt="H2O2U"><span>H2O2U</span></a>
     <nav class="side-links">
