@@ -162,7 +162,7 @@ $townships = ['Insein', 'Hlaing', 'Mayangone'];
                 </button>
 
                 <!-- My Order -->
-                <button type="button" class="sidebar-item" id="orderBtn" onclick="window.location.href='user_orders.php'">
+                <button type="button" class="sidebar-item" id="orderBtn" onclick="window.location.href='voucher.php'">
                     My Order
                 </button>
 
